@@ -1,0 +1,18 @@
+line_length:
+    warning: 150
+    error: 200
+
+disabled_rules: # rule identifiers to exclude from running
+  - function_parameter_count
+  - large_tuple
+  - opening_brace
+  - statement_position
+  - file_length
+
+included:
+  - PhotoMap
+  - PhotoMapTests
+  - PhotoMapUITests
+
+excluded:
+  - Pods
