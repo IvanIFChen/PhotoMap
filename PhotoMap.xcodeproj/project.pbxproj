@@ -15,11 +15,6 @@
 		867E57BA1F46800500339429 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B81F46800500339429 /* LaunchScreen.storyboard */; };
 		867E57C51F46800500339429 /* PhotoMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57C41F46800500339429 /* PhotoMapTests.swift */; };
 		867E57D01F46800500339429 /* PhotoMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57CF1F46800500339429 /* PhotoMapUITests.swift */; };
-		867E57DF1F46818C00339429 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57DE1F46818C00339429 /* AppCoordinator.swift */; };
-		867E57E11F4681B100339429 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57E01F4681B100339429 /* MapCoordinator.swift */; };
-		867E57E31F46827400339429 /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57E21F46827400339429 /* CameraCoordinator.swift */; };
-		867E57E51F46828500339429 /* CollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57E41F46828500339429 /* CollectionCoordinator.swift */; };
-		867E57E71F4682AE00339429 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57E61F4682AE00339429 /* Coordinator.swift */; };
 		868706051F468AE700302B79 /* AppCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868706041F468AE700302B79 /* AppCoordinatorTest.swift */; };
 		95D7E0286D87A3089356BBA3 /* Pods_PhotoMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EAE49A931BE89C93B224C3B /* Pods_PhotoMap.framework */; };
 		BBBA5BEFA811E6C122AF7CC6 /* Pods_PhotoMapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D313679D1218816BAEEFF22 /* Pods_PhotoMapTests.framework */; };
@@ -62,11 +57,6 @@
 		867E57CB1F46800500339429 /* PhotoMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E57CF1F46800500339429 /* PhotoMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapUITests.swift; sourceTree = "<group>"; };
 		867E57D11F46800500339429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		867E57DE1F46818C00339429 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		867E57E01F4681B100339429 /* MapCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
-		867E57E21F46827400339429 /* CameraCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
-		867E57E41F46828500339429 /* CollectionCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCoordinator.swift; sourceTree = "<group>"; };
-		867E57E61F4682AE00339429 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		868706041F468AE700302B79 /* AppCoordinatorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCoordinatorTest.swift; path = CoordinatorTest/AppCoordinatorTest.swift; sourceTree = "<group>"; };
 		9F62DEAC6EEFFBB340E2D310 /* Pods-PhotoMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMap/Pods-PhotoMap.release.xcconfig"; sourceTree = "<group>"; };
 		D3BE57DF37F066FFCEAC4825 /* Pods-PhotoMapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMapUITests/Pods-PhotoMapUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,7 +139,6 @@
 		867E57AE1F46800500339429 /* PhotoMap */ = {
 			isa = PBXGroup;
 			children = (
-				867E57DD1F46817900339429 /* Coordinators */,
 				867E57AF1F46800500339429 /* AppDelegate.swift */,
 				867E57B11F46800500339429 /* ViewController.swift */,
 				867E57B31F46800500339429 /* Main.storyboard */,
@@ -177,18 +166,6 @@
 				867E57D11F46800500339429 /* Info.plist */,
 			);
 			path = PhotoMapUITests;
-			sourceTree = "<group>";
-		};
-		867E57DD1F46817900339429 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				867E57E61F4682AE00339429 /* Coordinator.swift */,
-				867E57DE1F46818C00339429 /* AppCoordinator.swift */,
-				867E57E21F46827400339429 /* CameraCoordinator.swift */,
-				867E57E41F46828500339429 /* CollectionCoordinator.swift */,
-				867E57E01F4681B100339429 /* MapCoordinator.swift */,
-			);
-			name = Coordinators;
 			sourceTree = "<group>";
 		};
 		868706031F468AAF00302B79 /* CoordinatorTest */ = {
@@ -496,13 +473,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				867E57DF1F46818C00339429 /* AppCoordinator.swift in Sources */,
-				867E57E31F46827400339429 /* CameraCoordinator.swift in Sources */,
-				867E57E51F46828500339429 /* CollectionCoordinator.swift in Sources */,
-				867E57E11F4681B100339429 /* MapCoordinator.swift in Sources */,
 				867E57B21F46800500339429 /* ViewController.swift in Sources */,
 				867E57B01F46800500339429 /* AppDelegate.swift in Sources */,
-				867E57E71F4682AE00339429 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
