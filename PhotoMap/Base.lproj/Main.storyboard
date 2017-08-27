@@ -1,26 +1,124 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ak-Lp-ygY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Camera View-->
+        <scene sceneID="iVF-xL-6w4">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Camera View" id="ZFR-j0-ttw" customClass="CameraViewController" customModule="PhotoMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="550-MZ-j2a"/>
+                        <viewControllerLayoutGuide type="bottom" id="6js-84-M3l"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="ffT-Fe-6zc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qV-ia-DfT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0qV-ia-DfT" secondAttribute="trailing" id="7Up-qC-9ny"/>
+                            <constraint firstItem="0qV-ia-DfT" firstAttribute="leading" secondItem="ffT-Fe-6zc" secondAttribute="leading" id="JfU-yg-8eX"/>
+                            <constraint firstItem="6js-84-M3l" firstAttribute="top" secondItem="0qV-ia-DfT" secondAttribute="bottom" id="Sxu-uh-Zjt"/>
+                            <constraint firstItem="0qV-ia-DfT" firstAttribute="top" secondItem="550-MZ-j2a" secondAttribute="bottom" id="hqb-0J-ZiF"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="CameraIcon" id="DAO-Tx-yaC"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9IW-k7-0jx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-326" y="-20"/>
+        </scene>
+        <!--Map View-->
+        <scene sceneID="QQF-Ms-rjY">
+            <objects>
+                <viewController title="Map View" id="hKO-i4-HBs" customClass="MapViewController" customModule="PhotoMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="slj-R6-wKT"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Rh-SV-fJj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yw3-32-9jc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Map view" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G2U-Gs-ag7">
+                                <rect key="frame" x="139" y="206" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="MapIcon" selectedImage="MapIcon" id="Csh-ct-oL9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="weD-0V-Agh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327" y="-725"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="aAe-jV-dSA">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7b6-Xe-H8T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="8ak-Lp-ygY" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="PK1-br-lh4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="hKO-i4-HBs" kind="relationship" relationship="viewControllers" id="r01-Cl-wm2"/>
+                        <segue destination="ZFR-j0-ttw" kind="relationship" relationship="viewControllers" id="YvB-pA-jxb"/>
+                        <segue destination="9ZI-dM-kxe" kind="relationship" relationship="viewControllers" id="IZO-Sf-HXL"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="-1751" y="277"/>
+        </scene>
+        <!--Album View-->
+        <scene sceneID="PXT-dm-Mdf">
+            <objects>
+                <viewController title="Album View" id="9ZI-dM-kxe" customClass="AlbumViewController" customModule="PhotoMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DlQ-Mi-wvk"/>
+                        <viewControllerLayoutGuide type="bottom" id="ooP-aM-e27"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n6m-IX-nld">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Album view" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d6f-Qh-xgd">
+                                <rect key="frame" x="177" y="199" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="AlbumIcon" selectedImage="AlbumIcon" id="ZJK-T1-reN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KmR-Y0-vB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327" y="672"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AlbumIcon" width="25" height="25"/>
+        <image name="CameraIcon" width="25" height="25"/>
+        <image name="MapIcon" width="25" height="25"/>
+    </resources>
 </document>

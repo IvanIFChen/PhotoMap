@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1B3287D845DC66E52475525E /* Pods_PhotoMapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263B5F7E9CE27A1F5B4DB835 /* Pods_PhotoMapUITests.framework */; };
+		861A1E561F4E8BCC001CA9DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E551F4E8BCC001CA9DF /* MapViewController.swift */; };
+		861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E571F4E8C55001CA9DF /* CameraViewController.swift */; };
+		861A1E5A1F4E8C76001CA9DF /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */; };
 		867E57B01F46800500339429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57AF1F46800500339429 /* AppDelegate.swift */; };
 		867E57B21F46800500339429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57B11F46800500339429 /* ViewController.swift */; };
 		867E57B51F46800500339429 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B31F46800500339429 /* Main.storyboard */; };
@@ -44,6 +47,9 @@
 		4D313679D1218816BAEEFF22 /* Pods_PhotoMapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoMapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1CD76A8C06232C06E39E6F /* Pods-PhotoMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMap/Pods-PhotoMap.debug.xcconfig"; sourceTree = "<group>"; };
 		5E1ACC97CADCADDC009A06B7 /* Pods-PhotoMapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMapTests/Pods-PhotoMapTests.debug.xcconfig"; sourceTree = "<group>"; };
+		861A1E551F4E8BCC001CA9DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Views/MapViewController.swift; sourceTree = "<group>"; };
+		861A1E571F4E8C55001CA9DF /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Views/CameraViewController.swift; sourceTree = "<group>"; };
+		861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumViewController.swift; path = Views/AlbumViewController.swift; sourceTree = "<group>"; };
 		867E57AC1F46800500339429 /* PhotoMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E57AF1F46800500339429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867E57B11F46800500339429 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +120,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		861A1E541F4E8BAE001CA9DF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				861A1E551F4E8BCC001CA9DF /* MapViewController.swift */,
+				861A1E571F4E8C55001CA9DF /* CameraViewController.swift */,
+				861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		867E57A31F46800500339429 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +155,7 @@
 		867E57AE1F46800500339429 /* PhotoMap */ = {
 			isa = PBXGroup;
 			children = (
+				861A1E541F4E8BAE001CA9DF /* Views */,
 				867E57AF1F46800500339429 /* AppDelegate.swift */,
 				867E57B11F46800500339429 /* ViewController.swift */,
 				867E57B31F46800500339429 /* Main.storyboard */,
@@ -474,7 +491,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				867E57B21F46800500339429 /* ViewController.swift in Sources */,
+				861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */,
+				861A1E561F4E8BCC001CA9DF /* MapViewController.swift in Sources */,
 				867E57B01F46800500339429 /* AppDelegate.swift in Sources */,
+				861A1E5A1F4E8C76001CA9DF /* AlbumViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
