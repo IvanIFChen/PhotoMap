@@ -34,7 +34,7 @@
                             <constraint firstItem="0qV-ia-DfT" firstAttribute="top" secondItem="550-MZ-j2a" secondAttribute="bottom" id="hqb-0J-ZiF"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="CameraIcon" id="DAO-Tx-yaC"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="CameraIcon" id="DAO-Tx-yaC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IW-k7-0jx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,7 +62,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="MapIcon" selectedImage="MapIcon" id="Csh-ct-oL9"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="MapIcon" selectedImage="MapIcon" id="Csh-ct-oL9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="weD-0V-Agh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,7 +109,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="AlbumIcon" selectedImage="AlbumIcon" id="ZJK-T1-reN"/>
+                    <tabBarItem key="tabBarItem" title="Album" image="AlbumIcon" selectedImage="AlbumIcon" id="ZJK-T1-reN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KmR-Y0-vB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
