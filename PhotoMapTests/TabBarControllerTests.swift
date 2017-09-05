@@ -7,29 +7,43 @@
 //
 
 import XCTest
+@testable import PhotoMap
 
-class TabBarControllerTests: XCTestCase {
-    
+class TabBarControllerTests: XCTestCase
+{
+    var sut: UITabBarController!
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = UITabBarController()
+        _ = sut.view
+//        sut.viewControllers?.forEach
+//        { (viewController) in
+//            _ = viewController.view
+//        }
     }
-    
+
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    func testTabBarItemTypeTitle()
+    {
+        XCTAssertTrue(TabBarController.TabBarItemType.map.tabBarTitle() == "Map")
+        XCTAssertTrue(TabBarController.TabBarItemType.camera.tabBarTitle() == "Camera")
+        XCTAssertTrue(TabBarController.TabBarItemType.album.tabBarTitle() == "Album")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+
+    func testTabBarControllerTitles()
+    {
+        guard let tabs = sut.tabBar.items else
+        {
+            XCTFail("tab bar is nil")
+            return
         }
+        XCTAssertTrue(tabs[0].title == "Map")
+        XCTAssertTrue(tabs[1].title == "Camera")
+        XCTAssertTrue(tabs[2].title == "Album")
     }
-    
 }

@@ -29,4 +29,10 @@ class TabBarController: UITabBarController
             }
         }
     }
+
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        selectedIndex = TabBarItemType.camera.rawValue
+    }
 }

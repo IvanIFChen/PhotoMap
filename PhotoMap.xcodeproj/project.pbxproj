@@ -11,6 +11,11 @@
 		861A1E561F4E8BCC001CA9DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E551F4E8BCC001CA9DF /* MapViewController.swift */; };
 		861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E571F4E8C55001CA9DF /* CameraViewController.swift */; };
 		861A1E5A1F4E8C76001CA9DF /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */; };
+		861A1E601F5383A2001CA9DF /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */; };
+		863A098D1F5DDD8A00D28359 /* UITestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098C1F5DDD8A00D28359 /* UITestHelper.swift */; };
+		863A098F1F5DDE8900D28359 /* CameraFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */; };
+		863A09911F5DE06500D28359 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A09901F5DE06500D28359 /* TabBarController.swift */; };
+		863A09931F5DE0A600D28359 /* CameraScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A09921F5DE0A600D28359 /* CameraScreen.swift */; };
 		867E57B01F46800500339429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57AF1F46800500339429 /* AppDelegate.swift */; };
 		867E57B21F46800500339429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57B11F46800500339429 /* ViewController.swift */; };
 		867E57B51F46800500339429 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B31F46800500339429 /* Main.storyboard */; };
@@ -18,7 +23,6 @@
 		867E57BA1F46800500339429 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B81F46800500339429 /* LaunchScreen.storyboard */; };
 		867E57C51F46800500339429 /* PhotoMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57C41F46800500339429 /* PhotoMapTests.swift */; };
 		867E57D01F46800500339429 /* PhotoMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57CF1F46800500339429 /* PhotoMapUITests.swift */; };
-		868706051F468AE700302B79 /* AppCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868706041F468AE700302B79 /* AppCoordinatorTest.swift */; };
 		95D7E0286D87A3089356BBA3 /* Pods_PhotoMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EAE49A931BE89C93B224C3B /* Pods_PhotoMap.framework */; };
 		BBBA5BEFA811E6C122AF7CC6 /* Pods_PhotoMapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D313679D1218816BAEEFF22 /* Pods_PhotoMapTests.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +54,11 @@
 		861A1E551F4E8BCC001CA9DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Views/MapViewController.swift; sourceTree = "<group>"; };
 		861A1E571F4E8C55001CA9DF /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Views/CameraViewController.swift; sourceTree = "<group>"; };
 		861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumViewController.swift; path = Views/AlbumViewController.swift; sourceTree = "<group>"; };
+		861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
+		863A098C1F5DDD8A00D28359 /* UITestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestHelper.swift; sourceTree = "<group>"; };
+		863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFlowUITests.swift; sourceTree = "<group>"; };
+		863A09901F5DE06500D28359 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		863A09921F5DE0A600D28359 /* CameraScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraScreen.swift; sourceTree = "<group>"; };
 		867E57AC1F46800500339429 /* PhotoMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E57AF1F46800500339429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867E57B11F46800500339429 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +72,6 @@
 		867E57CB1F46800500339429 /* PhotoMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E57CF1F46800500339429 /* PhotoMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapUITests.swift; sourceTree = "<group>"; };
 		867E57D11F46800500339429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		868706041F468AE700302B79 /* AppCoordinatorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCoordinatorTest.swift; path = CoordinatorTest/AppCoordinatorTest.swift; sourceTree = "<group>"; };
 		9F62DEAC6EEFFBB340E2D310 /* Pods-PhotoMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMap/Pods-PhotoMap.release.xcconfig"; sourceTree = "<group>"; };
 		D3BE57DF37F066FFCEAC4825 /* Pods-PhotoMapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMapUITests/Pods-PhotoMapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1D399F29758ED755C9F3944 /* Pods-PhotoMapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMapUITests/Pods-PhotoMapUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +138,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		863A09851F5DDD3000D28359 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				863A09921F5DE0A600D28359 /* CameraScreen.swift */,
+			);
+			name = Screens;
+			sourceTree = "<group>";
+		};
 		867E57A31F46800500339429 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +178,7 @@
 				867E57B61F46800500339429 /* Assets.xcassets */,
 				867E57B81F46800500339429 /* LaunchScreen.storyboard */,
 				867E57BB1F46800500339429 /* Info.plist */,
+				863A09901F5DE06500D28359 /* TabBarController.swift */,
 			);
 			path = PhotoMap;
 			sourceTree = "<group>";
@@ -169,9 +186,9 @@
 		867E57C31F46800500339429 /* PhotoMapTests */ = {
 			isa = PBXGroup;
 			children = (
-				868706031F468AAF00302B79 /* CoordinatorTest */,
 				867E57C41F46800500339429 /* PhotoMapTests.swift */,
 				867E57C61F46800500339429 /* Info.plist */,
+				861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */,
 			);
 			path = PhotoMapTests;
 			sourceTree = "<group>";
@@ -179,18 +196,13 @@
 		867E57CE1F46800500339429 /* PhotoMapUITests */ = {
 			isa = PBXGroup;
 			children = (
+				863A09851F5DDD3000D28359 /* Screens */,
 				867E57CF1F46800500339429 /* PhotoMapUITests.swift */,
 				867E57D11F46800500339429 /* Info.plist */,
+				863A098C1F5DDD8A00D28359 /* UITestHelper.swift */,
+				863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */,
 			);
 			path = PhotoMapUITests;
-			sourceTree = "<group>";
-		};
-		868706031F468AAF00302B79 /* CoordinatorTest */ = {
-			isa = PBXGroup;
-			children = (
-				868706041F468AE700302B79 /* AppCoordinatorTest.swift */,
-			);
-			name = CoordinatorTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,6 +505,7 @@
 				867E57B21F46800500339429 /* ViewController.swift in Sources */,
 				861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */,
 				861A1E561F4E8BCC001CA9DF /* MapViewController.swift in Sources */,
+				863A09911F5DE06500D28359 /* TabBarController.swift in Sources */,
 				867E57B01F46800500339429 /* AppDelegate.swift in Sources */,
 				861A1E5A1F4E8C76001CA9DF /* AlbumViewController.swift in Sources */,
 			);
@@ -502,8 +515,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				868706051F468AE700302B79 /* AppCoordinatorTest.swift in Sources */,
 				867E57C51F46800500339429 /* PhotoMapTests.swift in Sources */,
+				861A1E601F5383A2001CA9DF /* TabBarControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +524,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				863A098F1F5DDE8900D28359 /* CameraFlowUITests.swift in Sources */,
 				867E57D01F46800500339429 /* PhotoMapUITests.swift in Sources */,
+				863A09931F5DE0A600D28359 /* CameraScreen.swift in Sources */,
+				863A098D1F5DDD8A00D28359 /* UITestHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
