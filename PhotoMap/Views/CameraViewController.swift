@@ -9,11 +9,12 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController
+class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate
 {
     @IBOutlet weak var previewView: UIView!
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    var capturePhotoOutput: AVCapturePhotoOutput?
 
     override func viewDidLoad()
     {
@@ -34,16 +35,60 @@ class CameraViewController: UIViewController
         videoPreviewLayer?.frame = view.layer.bounds
         previewView.layer.addSublayer(videoPreviewLayer!)
         captureSession?.startRunning()
+
+        // Get an instance of ACCapturePhotoOutput class
+        capturePhotoOutput = AVCapturePhotoOutput()
+        capturePhotoOutput?.isHighResolutionCaptureEnabled = true
+        // Set the output on the capture session
+        captureSession?.addOutput(capturePhotoOutput)
     }
 
-    override func viewDidAppear(_ animated: Bool)
+    @IBAction func onTapTakePhoto(_ sender: UIButton)
     {
-        super.viewDidAppear(animated)
-    }
+        guard let capturePhotoOutput = capturePhotoOutput else
+        {
+            return
+        }
+        let photoSettings = AVCapturePhotoSettings()
+        photoSettings.isAutoStillImageStabilizationEnabled = true
+        photoSettings.isHighResolutionPhotoEnabled = true
+        photoSettings.flashMode = .auto
 
-    override func didReceiveMemoryWarning()
+        capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
+}
+
+extension CameraViewController
+{
+    func capture(_ captureOutput: AVCapturePhotoOutput,
+                 didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?,
+                 previewPhotoSampleBuffer: CMSampleBuffer?,
+                 resolvedSettings: AVCaptureResolvedPhotoSettings,
+                 bracketSettings: AVCaptureBracketedStillImageSettings?,
+                 error: Error?)
     {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // get captured image
+
+        // Make sure we get some photo sample buffer
+        guard error == nil,
+            let photoSampleBuffer = photoSampleBuffer else
+        {
+            print("Error capturing photo: \(String(describing: error))")
+            return
+        }
+        // Convert photo same buffer to a jpeg image data by using // AVCapturePhotoOutput
+        guard let imageData =
+            AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer,
+                                                             previewPhotoSampleBuffer: previewPhotoSampleBuffer) else
+        {
+            return
+        }
+        // Initialise a UIImage with our image data
+        let capturedImage = UIImage.init(data: imageData, scale: 1.0)
+        if let image = capturedImage
+        {
+            // Save our captured image to photos album
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
     }
 }

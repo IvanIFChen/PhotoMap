@@ -42,8 +42,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) photo use</string>
+	<string>plz let me use</string>
 	<key>NSCameraUsageDescription</key>
-	<string>camera use</string>
+	<string>plz let me use</string>
 </dict>
 </plist>
