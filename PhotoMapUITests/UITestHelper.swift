@@ -10,5 +10,5 @@ import XCTest
 
 class App: XCUIApplication
 {
-    // not sure if this is necessary
+    // might not need this
 }
