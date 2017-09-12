@@ -9,86 +9,96 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate
+class CameraViewController: UIViewController
 {
     @IBOutlet weak var previewView: UIView!
-    var captureSession: AVCaptureSession?
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    var capturePhotoOutput: AVCapturePhotoOutput?
+
+    let imagePicker = UIImagePickerController()
 
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        do
-        {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-            captureSession = AVCaptureSession()
-            captureSession?.addInput(input)
-        }
-        catch
-        {
-            print(error)
-        }
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        videoPreviewLayer?.frame = view.layer.bounds
-        previewView.layer.addSublayer(videoPreviewLayer!)
-        captureSession?.startRunning()
-
-        // Get an instance of ACCapturePhotoOutput class
-        capturePhotoOutput = AVCapturePhotoOutput()
-        capturePhotoOutput?.isHighResolutionCaptureEnabled = true
-        // Set the output on the capture session
-        captureSession?.addOutput(capturePhotoOutput)
+        _ = checkCameraAuthorizationStatus()
     }
 
-    @IBAction func onTapTakePhoto(_ sender: UIButton)
+    override func viewWillAppear(_ animated: Bool)
     {
-        guard let capturePhotoOutput = capturePhotoOutput else
-        {
+        super.viewWillAppear(animated)
+        openCamera()
+    }
+
+    fileprivate func openCamera()
+    {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("This device doesn't have a camera.")
             return
         }
-        let photoSettings = AVCapturePhotoSettings()
-        photoSettings.isAutoStillImageStabilizationEnabled = true
-        photoSettings.isHighResolutionPhotoEnabled = true
-        photoSettings.flashMode = .off
 
-        capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
+        imagePicker.sourceType = .camera
+        imagePicker.cameraDevice = .rear
+        imagePicker.cameraCaptureMode = .photo
+        imagePicker.cameraFlashMode = .off
+        imagePicker.delegate = self
+
+        present(imagePicker, animated: true)
+
     }
+
+    fileprivate func checkCameraAuthorizationStatus() -> Bool
+    {
+        var result: Bool = false
+        let cameraMediaType = AVMediaTypeVideo
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
+
+        switch cameraAuthorizationStatus
+        {
+            case .denied: break
+            case .authorized: result = true;  break
+            case .restricted: break
+            case .notDetermined:
+                // Prompting user for the permission to use the camera.
+                AVCaptureDevice.requestAccess(forMediaType: cameraMediaType)
+                { granted in
+                    if granted
+                    {
+                        print("Granted access to \(cameraMediaType)")
+                    } else
+                    {
+                        print("Denied access to \(cameraMediaType)")
+                    }
+                }
+        }
+        return result
+    }
+
 }
 
-extension CameraViewController
+extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
-    func capture(_ captureOutput: AVCapturePhotoOutput,
-                 didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?,
-                 previewPhotoSampleBuffer: CMSampleBuffer?,
-                 resolvedSettings: AVCaptureResolvedPhotoSettings,
-                 bracketSettings: AVCaptureBracketedStillImageSettings?,
-                 error: Error?)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
-        // get captured image
+        defer
+        {
+            picker.dismiss(animated: true)
+            tabBarController?.selectedIndex = 2
+        }
 
-        // Make sure we get some photo sample buffer
-        guard error == nil,
-            let photoSampleBuffer = photoSampleBuffer else
-        {
-            print("Error capturing photo: \(String(describing: error))")
+        print(info)
+
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             return
         }
-        // Convert photo same buffer to a jpeg image data by using // AVCapturePhotoOutput
-        guard let imageData =
-            AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer,
-                                                             previewPhotoSampleBuffer: previewPhotoSampleBuffer) else
+
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        defer
         {
-            return
+            picker.dismiss(animated: true)
+            tabBarController?.selectedIndex = 2
         }
-        // Initialise a UIImage with our image data
-        let capturedImage = UIImage.init(data: imageData, scale: 1.0)
-        if let image = capturedImage
-        {
-            // Save our captured image to photos album
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        }
+        
+        print("did cancel")
     }
 }
