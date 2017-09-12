@@ -10,29 +10,9 @@ import UIKit
 
 class TabBarController: UITabBarController
 {
-    enum TabBarItemType: Int
-    {
-        case map
-        case camera
-        case album
-
-        func tabBarTitle() -> String
-        {
-            switch self
-            {
-                case .map:
-                    return "Map"
-                case .camera:
-                    return "Camera"
-                case .album:
-                    return "Album"
-            }
-        }
-    }
-
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        selectedIndex = TabBarItemType.camera.rawValue
+        selectedIndex = 0
     }
 }
