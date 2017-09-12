@@ -52,7 +52,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate
         let photoSettings = AVCapturePhotoSettings()
         photoSettings.isAutoStillImageStabilizationEnabled = true
         photoSettings.isHighResolutionPhotoEnabled = true
-        photoSettings.flashMode = .auto
+        photoSettings.flashMode = .off
 
         capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
     }
