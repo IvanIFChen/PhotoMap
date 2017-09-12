@@ -21,7 +21,6 @@
 		867E57B51F46800500339429 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B31F46800500339429 /* Main.storyboard */; };
 		867E57B71F46800500339429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B61F46800500339429 /* Assets.xcassets */; };
 		867E57BA1F46800500339429 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B81F46800500339429 /* LaunchScreen.storyboard */; };
-		867E57C51F46800500339429 /* PhotoMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57C41F46800500339429 /* PhotoMapTests.swift */; };
 		95D7E0286D87A3089356BBA3 /* Pods_PhotoMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EAE49A931BE89C93B224C3B /* Pods_PhotoMap.framework */; };
 		BBBA5BEFA811E6C122AF7CC6 /* Pods_PhotoMapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D313679D1218816BAEEFF22 /* Pods_PhotoMapTests.framework */; };
 /* End PBXBuildFile section */
@@ -66,7 +65,6 @@
 		867E57B91F46800500339429 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		867E57BB1F46800500339429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		867E57C01F46800500339429 /* PhotoMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		867E57C41F46800500339429 /* PhotoMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapTests.swift; sourceTree = "<group>"; };
 		867E57C61F46800500339429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		867E57CB1F46800500339429 /* PhotoMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E57D11F46800500339429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 		867E57C31F46800500339429 /* PhotoMapTests */ = {
 			isa = PBXGroup;
 			children = (
-				867E57C41F46800500339429 /* PhotoMapTests.swift */,
 				867E57C61F46800500339429 /* Info.plist */,
 				861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */,
 			);
@@ -512,7 +509,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				867E57C51F46800500339429 /* PhotoMapTests.swift in Sources */,
 				861A1E601F5383A2001CA9DF /* TabBarControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

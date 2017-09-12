@@ -19,25 +19,22 @@ class CameraFlowUITests: XCTestCase
         cameraScreen = CameraScreen(app: app)
     }
 
-    override func tearDown()
-    {
-        super.tearDown()
-    }
-
     func testTapOnCameraTabShowsCameraTab()
     {
         app.launch()
 
         app.cameraTab.tap()
 
-        // TODO check it's the camera view
-    }
-}
+//        let app = XCUIApplication()
+//        let cameraButton = app.tabBars.buttons["Camera"]
+//        cameraButton.tap()
+//        
+//        let element3 = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+//        let element = element3.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element
+//        element.tap()
 
-extension XCUIApplication
-{
-    var cameraTab: XCUIElement
-    {
-        return buttons.element(matching: .button, identifier: "Camera")
+        // question: how do I UI test this? Or even unit test this? (the image picker)
+
+        // TODO check it's the camera view
     }
 }
