@@ -7,102 +7,40 @@
 //
 
 import UIKit
-import Photos
-
-//class AlbumViewController: UIViewController, UICollectionViewDataSource
-
-class AlbumViewController: UIViewController
+class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
 {
-//    @IBOutlet weak var cameraRollCollectionView: UICollectionView!
-//
-//    fileprivate var assetCollection: PHAssetCollection!
-//    fileprivate var photosAsset: PHFetchResult<AnyObject>!
-//    fileprivate var assetThumbnailSize: CGSize!
-//
-//    override func viewDidLoad()
-//    {
-//        super.viewDidLoad()
-//
-//        let fetchOptions = PHFetchOptions()
-//
-//        let collection:PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
-//
-//        if let first_Obj:AnyObject = collection.firstObject{
-//            //found the album
-//            self.assetCollection = first_Obj as! PHAssetCollection
-//        }
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool)
-//    {
-//        // Get size of the collectionView cell for thumbnail image
-//        if let layout = self.cameraRollCollectionView!.collectionViewLayout as? UICollectionViewFlowLayout{
-//            let cellSize = layout.itemSize
-//
-//            self.assetThumbnailSize = CGSize(width: cellSize.width, height: cellSize.height)
-//        }
-//
-//        //fetch the photos from collection
-//        self.photosAsset = (PHAsset.fetchAssets(in: self.assetCollection, options: nil) as AnyObject!) as! PHFetchResult<AnyObject>!
-//
-//
-//        self.cameraRollCollectionView!.reloadData()
-//
-//    }
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int
-//    {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-//    {
-//        // #warning Incomplete implementation, return the number of items
-//        var count: Int = 0
-//
-//        if(self.photosAsset != nil){
-//            count = self.photosAsset.count
-//        }
-//
-//        return count;
-//    }
-//
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-//    {
-//        //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cameraCell", for: indexPath as IndexPath) as! UserImagesCollectionViewCell
-//
-//        //        //Modify the cell
-//        //        let asset: PHAsset = self.photosAsset[indexPath.item] as! PHAsset
-//        //
-//        //        PHImageManager.default().requestImage(for: asset, targetSize: self.assetThumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: {(result, info)in
-//        //            if result != nil {
-//        //                cell.userImage.image = result
-//        //            }
-//        //        })
-//        //
-//        //        return cell
-//        return UICollectionViewCell()
-//    }
-}
+    let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
+    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
+                 "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45",
+                 "46", "47", "48"]
 
-//extension AlbumViewController: UICollectionViewDelegate
-//{
-//    func collectionView(collectinView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat
-//    {
-//        return 4
-//    }
-//
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat
-//    {
-//        return 1
-//    }
-//}
-//
-//extension AlbumViewController: UIImagePickerControllerDelegate
-//{
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
-//        picker.dismiss(animated: true, completion: nil)
-//    }
-//}
+    // MARK: - UICollectionViewDataSource protocol
+
+    // tell the collection view how many cells to make
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return self.items.count
+    }
+
+    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        // get a reference to our storyboard cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
+                        as? MyCollectionViewCell ?? MyCollectionViewCell()
+
+        // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        cell.myLabel.text = self.items[indexPath.item]
+        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+
+        return cell
+    }
+
+    // MARK: - UICollectionViewDelegate protocol
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
+    }
+}

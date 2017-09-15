@@ -21,10 +21,6 @@ class CameraFlowUITests: XCTestCase
 
     func testTapOnCameraTabShowsCameraTab()
     {
-        app.launch()
-
-        app.cameraTab.tap()
-
         let app = XCUIApplication()
         let cameraButton = app.tabBars.buttons["Camera"]
         cameraButton.tap()

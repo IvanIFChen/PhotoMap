@@ -1,18 +1,66 @@
+#==============================#
+# swiftlint configuration file #
+#==============================#
+
+empty_count: error
+force_try: error
+closing_brace: error
+colon: error
+comma: error
+conditional_binding_cascade: error
+control_statement: error
+leading_whitespace: error
+operator_whitespace: error
+return_arrow_whitespace: error
+trailing_newline: error
+trailing_semicolon: error
+trailing_whitespace: error
+void_return: error
+weak_delegate: error
+
+todo: warning
+
+variable_name:
+  severity: warning
+  min_length: 2
+  max_length: 100
+type_name:
+  severity: warning
+  min_length: 2
+  max_length: 100
 line_length:
-    warning: 150
-    error: 200
+  warning: 150
+  error: 200
+function_body_length:
+  warning: 40
+  error: 70
+cyclomatic_complexity:
+  warning: 10
+  error: 30
+
+custom_rules:
+#  guard_style:
+#    name: "Guard Style"
+#    regex: "(guard([^\n]*\,\n)+[^\n]*\n[\h]*else\n)|(guard[^\n]*\n[\h]*else)"
+#    severity: error
+#    message: "Else should be on the same line as the guard"
+#  else_style:
+#   name: "Else/Catch Style"
+#   regex: "\}[^\n]*else|else[^\n]*\{|\}[^\n]*catch|catch[^\n]*\{"
+#   severity: error
+#   message: "Else/Catch and opening brace should go on new lines."
 
 disabled_rules: # rule identifiers to exclude from running
   - function_parameter_count
-  - large_tuple
+  - large_tuple # tuples larger than 3 properties
   - opening_brace
-  - statement_position
+  - statement_position # placement of else/catch near '{'
   - file_length
 
 included:
-  - PhotoMap
-  - PhotoMapTests
-  - PhotoMapUITests
+- PhotoMap
+- PhotoMapTests
+- PhotoMapUITests
 
 excluded:
   - Pods

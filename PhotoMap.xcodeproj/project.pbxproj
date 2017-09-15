@@ -12,6 +12,7 @@
 		861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E571F4E8C55001CA9DF /* CameraViewController.swift */; };
 		861A1E5A1F4E8C76001CA9DF /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */; };
 		861A1E601F5383A2001CA9DF /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */; };
+		863650D91F6B4C4B001A8F96 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863650D81F6B4C4B001A8F96 /* MyCollectionViewCell.swift */; };
 		863A098D1F5DDD8A00D28359 /* UITestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098C1F5DDD8A00D28359 /* UITestHelper.swift */; };
 		863A098F1F5DDE8900D28359 /* CameraFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */; };
 		863A09911F5DE06500D28359 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A09901F5DE06500D28359 /* TabBarController.swift */; };
@@ -53,6 +54,7 @@
 		861A1E571F4E8C55001CA9DF /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Views/CameraViewController.swift; sourceTree = "<group>"; };
 		861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumViewController.swift; path = Views/AlbumViewController.swift; sourceTree = "<group>"; };
 		861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
+		863650D81F6B4C4B001A8F96 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		863A098C1F5DDD8A00D28359 /* UITestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestHelper.swift; sourceTree = "<group>"; };
 		863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFlowUITests.swift; sourceTree = "<group>"; };
 		863A09901F5DE06500D28359 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				861A1E551F4E8BCC001CA9DF /* MapViewController.swift */,
 				861A1E571F4E8C55001CA9DF /* CameraViewController.swift */,
 				861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */,
+				863650D81F6B4C4B001A8F96 /* MyCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -272,7 +275,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					867E57AB1F46800500339429 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -497,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				867E57B21F46800500339429 /* ViewController.swift in Sources */,
+				863650D91F6B4C4B001A8F96 /* MyCollectionViewCell.swift in Sources */,
 				861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */,
 				861A1E561F4E8BCC001CA9DF /* MapViewController.swift in Sources */,
 				863A09911F5DE06500D28359 /* TabBarController.swift in Sources */,
@@ -568,7 +572,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -576,7 +582,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -619,7 +629,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -627,7 +639,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
