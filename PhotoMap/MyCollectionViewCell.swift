@@ -9,5 +9,7 @@ import UIKit
 
 class MyCollectionViewCell: UICollectionViewCell
 {
-    @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var cardImage: UIImageView!
+    @IBOutlet weak var cardShadow: UIView!
+    @IBOutlet weak var cardLabel: UILabel!
 }

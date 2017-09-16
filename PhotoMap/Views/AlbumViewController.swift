@@ -7,36 +7,83 @@
 //
 
 import UIKit
-class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
+class AlbumViewController: UIViewController
 {
-    let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
-    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
-                 "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45",
-                 "46", "47", "48"]
+    @IBOutlet weak var collectionView: UICollectionView!
+    fileprivate let reuseIdentifier = "cell"
+    fileprivate var images: [UIImage] = []
+    fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 20.0, right: 0.0)
+    fileprivate let itemsPerRow: CGFloat = 1
 
-    // MARK: - UICollectionViewDataSource protocol
+    override func viewDidLoad()
+    {
+        collectionView.dataSource = self
+        collectionView.delegate = self
 
-    // tell the collection view how many cells to make
+        guard let meal1 = UIImage(named: "meal1") else
+        {
+            fatalError("unable to instantiate meal1")
+        }
+        guard let meal2 = UIImage(named: "meal2") else
+        {
+            fatalError("unable to instantiate meal2")
+        }
+        guard let meal3 = UIImage(named: "meal3") else
+        {
+            fatalError("unable to instantiate meal3")
+        }
+        for _ in 1...100
+        {
+            images += [meal1, meal2, meal3]
+        }
+    }
+}
+
+extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate
+{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return self.items.count
+        return images.count
     }
 
-    // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
-                        as? MyCollectionViewCell ?? MyCollectionViewCell()
-
-        // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.myLabel.text = self.items[indexPath.item]
-        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+            as? MyCollectionViewCell ?? MyCollectionViewCell()
+        cell.cardLabel.text = String(indexPath.item + 1)
+        cell.cardImage.image = images[indexPath.item]
 
         return cell
     }
 
-    // MARK: - UICollectionViewDelegate protocol
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath)
+        -> CGSize
+    {
+            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+            let availableWidth = view.frame.width - paddingSpace
+            let widthPerItem = availableWidth / itemsPerRow
+
+            return CGSize(width: widthPerItem, height: 130)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int)
+        -> UIEdgeInsets
+    {
+        return sectionInsets
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int)
+        -> CGFloat
+    {
+        return 5.0
+    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
