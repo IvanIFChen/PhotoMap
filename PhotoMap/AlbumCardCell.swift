@@ -1,5 +1,5 @@
 //
-//  MyCollectionViewCell.swift
+//  AlbumCardCell
 //  PhotoMap
 //
 //  Created by Ivan Chen on 9/14/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyCollectionViewCell: UICollectionViewCell
+class AlbumCardCell: UICollectionViewCell
 {
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardShadow: UIView!
