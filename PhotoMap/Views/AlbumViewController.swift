@@ -50,7 +50,7 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
     {
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
-            as? MyCollectionViewCell ?? MyCollectionViewCell()
+            as? AlbumCardCell ?? AlbumCardCell()
         cell.cardLabel.text = String(indexPath.item + 1)
         cell.cardImage.image = images[indexPath.item]
 
