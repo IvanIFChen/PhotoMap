@@ -10,6 +10,14 @@ import UIKit
 class AlbumCardCell: UICollectionViewCell
 {
     @IBOutlet weak var cardImage: UIImageView!
-    @IBOutlet weak var cardShadow: UIView!
+    @IBOutlet weak var cardBackground: UIView!
     @IBOutlet weak var cardLabel: UILabel!
+
+    var data: (textLabel: String, image: UIImage)?
+    {
+        didSet {
+            cardLabel.text = data?.textLabel
+            cardImage.image = data?.image
+        }
+    }
 }
