@@ -8,16 +8,19 @@
 
 import UIKit
 import AVFoundation
+import CoreLocation
 
-class CameraViewController: UIViewController
+class CameraViewController: UIViewController, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     @IBOutlet weak var previewView: UIView!
+    fileprivate let locationManager = CLLocationManager()
 
     let imagePicker = UIImagePickerController()
 
     override func viewDidLoad()
     {
         _ = checkCameraAuthorizationStatus()
+        checkLocationAuthorizationStatus()
     }
 
     override func viewWillAppear(_ animated: Bool)
@@ -25,9 +28,60 @@ class CameraViewController: UIViewController
         super.viewWillAppear(animated)
         openCamera()
     }
+
+    private func checkLocationAuthorizationStatus()
+    {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+    }
+
+    private func openCamera()
+    {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("This device doesn't have a camera.")
+            return
+        }
+
+        imagePicker.sourceType = .camera
+        imagePicker.cameraDevice = .rear
+        imagePicker.cameraCaptureMode = .photo
+        imagePicker.cameraFlashMode = .off
+        imagePicker.delegate = self
+
+        present(imagePicker, animated: true)
+
+    }
+
+    private func checkCameraAuthorizationStatus() -> Bool
+    {
+        var result: Bool = false
+        let cameraMediaType = AVMediaTypeVideo
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
+
+        switch cameraAuthorizationStatus
+        {
+        case .denied: break
+        case .authorized: result = true;  break
+        case .restricted: break
+        case .notDetermined:
+            // Prompting user for the permission to use the camera.
+            AVCaptureDevice.requestAccess(forMediaType: cameraMediaType)
+            { granted in
+                if granted
+                {
+                    print("Granted access to \(cameraMediaType)")
+                } else
+                {
+                    print("Denied access to \(cameraMediaType)")
+                }
+            }
+        }
+        return result
+    }
 }
 
-extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+// MARK: - UIImagepPickerControllerdelegate
+extension CameraViewController
 {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
@@ -55,52 +109,5 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         }
 
         print("did cancel")
-    }
-}
-
-extension CameraViewController
-{
-    fileprivate func openCamera()
-    {
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            print("This device doesn't have a camera.")
-            return
-        }
-
-        imagePicker.sourceType = .camera
-        imagePicker.cameraDevice = .rear
-        imagePicker.cameraCaptureMode = .photo
-        imagePicker.cameraFlashMode = .off
-        imagePicker.delegate = self
-
-        present(imagePicker, animated: true)
-
-    }
-
-    fileprivate func checkCameraAuthorizationStatus() -> Bool
-    {
-        var result: Bool = false
-        let cameraMediaType = AVMediaTypeVideo
-        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
-
-        switch cameraAuthorizationStatus
-        {
-        case .denied: break
-        case .authorized: result = true;  break
-        case .restricted: break
-        case .notDetermined:
-            // Prompting user for the permission to use the camera.
-            AVCaptureDevice.requestAccess(forMediaType: cameraMediaType)
-            { granted in
-                if granted
-                {
-                    print("Granted access to \(cameraMediaType)")
-                } else
-                {
-                    print("Denied access to \(cameraMediaType)")
-                }
-            }
-        }
-        return result
     }
 }
