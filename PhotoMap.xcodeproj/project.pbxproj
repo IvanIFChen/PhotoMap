@@ -12,7 +12,7 @@
 		861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E571F4E8C55001CA9DF /* CameraViewController.swift */; };
 		861A1E5A1F4E8C76001CA9DF /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */; };
 		861A1E601F5383A2001CA9DF /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */; };
-		863650D91F6B4C4B001A8F96 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863650D81F6B4C4B001A8F96 /* MyCollectionViewCell.swift */; };
+		863650D91F6B4C4B001A8F96 /* AlbumCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863650D81F6B4C4B001A8F96 /* AlbumCardCell.swift */; };
 		863A098D1F5DDD8A00D28359 /* UITestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098C1F5DDD8A00D28359 /* UITestHelper.swift */; };
 		863A098F1F5DDE8900D28359 /* CameraFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */; };
 		863A09911F5DE06500D28359 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A09901F5DE06500D28359 /* TabBarController.swift */; };
@@ -54,7 +54,7 @@
 		861A1E571F4E8C55001CA9DF /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Views/CameraViewController.swift; sourceTree = "<group>"; };
 		861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumViewController.swift; path = Views/AlbumViewController.swift; sourceTree = "<group>"; };
 		861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
-		863650D81F6B4C4B001A8F96 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		863650D81F6B4C4B001A8F96 /* AlbumCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCardCell.swift; sourceTree = "<group>"; };
 		863A098C1F5DDD8A00D28359 /* UITestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestHelper.swift; sourceTree = "<group>"; };
 		863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFlowUITests.swift; sourceTree = "<group>"; };
 		863A09901F5DE06500D28359 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 				861A1E551F4E8BCC001CA9DF /* MapViewController.swift */,
 				861A1E571F4E8C55001CA9DF /* CameraViewController.swift */,
 				861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */,
-				863650D81F6B4C4B001A8F96 /* MyCollectionViewCell.swift */,
+				863650D81F6B4C4B001A8F96 /* AlbumCardCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				867E57B21F46800500339429 /* ViewController.swift in Sources */,
-				863650D91F6B4C4B001A8F96 /* MyCollectionViewCell.swift in Sources */,
+				863650D91F6B4C4B001A8F96 /* AlbumCardCell.swift in Sources */,
 				861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */,
 				861A1E561F4E8BCC001CA9DF /* MapViewController.swift in Sources */,
 				863A09911F5DE06500D28359 /* TabBarController.swift in Sources */,
@@ -677,7 +677,7 @@
 				DEVELOPMENT_TEAM = MHPQMR6R7U;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap123123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -691,7 +691,7 @@
 				DEVELOPMENT_TEAM = MHPQMR6R7U;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap123123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
