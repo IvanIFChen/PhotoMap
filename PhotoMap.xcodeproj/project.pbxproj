@@ -677,7 +677,7 @@
 				DEVELOPMENT_TEAM = MHPQMR6R7U;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap170923;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -691,7 +691,7 @@
 				DEVELOPMENT_TEAM = MHPQMR6R7U;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap170923;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
