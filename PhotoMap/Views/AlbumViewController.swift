@@ -56,11 +56,7 @@ extension AlbumViewController: UICollectionViewDataSource
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
             as? AlbumCardCell ?? AlbumCardCell()
 
-<<<<<<< HEAD
         cell.cardData = (String(indexPath.item + 1), images[indexPath.item])
-=======
-        cell.data = (String(indexPath.item + 1), images[indexPath.item])
->>>>>>> album-tab
 
         return cell
     }
