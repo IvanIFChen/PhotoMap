@@ -38,12 +38,10 @@ class AlbumViewController: UIViewController
         }
     }
 }
-// MARK: -
-// MARK: - collectionview delegate -
-// MARK: -
-extension AlbumViewController: UICollectionViewDataSource
-{
 
+// MARK: - collectionview delegate -
+extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate
+{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return images.count
@@ -95,5 +93,3 @@ extension AlbumViewController: UICollectionViewDataSource
         print("You selected cell #\(indexPath.item)!")
     }
 }
-
-extension AlbumViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {}

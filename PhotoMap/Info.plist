@@ -47,5 +47,7 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>use photo library</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>user location</string>
 </dict>
 </plist>
