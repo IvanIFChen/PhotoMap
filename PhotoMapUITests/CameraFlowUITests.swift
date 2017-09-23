@@ -31,9 +31,7 @@ class CameraFlowUITests: XCTestCase
         element.tap()
         // swiftlint:enable line_length
         // question: how do I UI test this? Or even unit test this? (the image picker)
-
-
-
+        
         // TODO check it's the camera view
     }
 }

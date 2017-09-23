@@ -38,21 +38,29 @@ class AlbumViewController: UIViewController
         }
     }
 }
-
-extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate
+// MARK: -
+// MARK: - collectionview delegate -
+// MARK: -
+extension AlbumViewController: UICollectionViewDataSource
 {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return images.count
     }
 
+    // MARK: Collectionview Datasource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
             as? AlbumCardCell ?? AlbumCardCell()
-        cell.cardLabel.text = String(indexPath.item + 1)
-        cell.cardImage.image = images[indexPath.item]
+
+<<<<<<< HEAD
+        cell.cardData = (String(indexPath.item + 1), images[indexPath.item])
+=======
+        cell.data = (String(indexPath.item + 1), images[indexPath.item])
+>>>>>>> album-tab
 
         return cell
     }
@@ -91,3 +99,5 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
         print("You selected cell #\(indexPath.item)!")
     }
 }
+
+extension AlbumViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {}

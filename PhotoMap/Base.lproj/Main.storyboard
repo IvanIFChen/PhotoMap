@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ak-Lp-ygY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ak-Lp-ygY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -131,6 +131,7 @@
                                             <constraint firstAttribute="bottom" secondItem="nRt-Jr-caz" secondAttribute="bottom" id="2yu-EE-7uu"/>
                                             <constraint firstItem="5c7-Ag-M9Z" firstAttribute="leading" secondItem="xpU-W5-deF" secondAttribute="leading" constant="15" id="3gJ-oy-5E7"/>
                                             <constraint firstAttribute="trailing" secondItem="nRt-Jr-caz" secondAttribute="trailing" id="5Jn-aS-Rjg"/>
+                                            <constraint firstAttribute="trailing" secondItem="5c7-Ag-M9Z" secondAttribute="trailing" constant="326.5" id="6FE-Oe-zTM"/>
                                             <constraint firstItem="6NW-Kh-xBf" firstAttribute="top" secondItem="xpU-W5-deF" secondAttribute="top" id="R17-Je-2MI"/>
                                             <constraint firstItem="6NW-Kh-xBf" firstAttribute="leading" secondItem="xpU-W5-deF" secondAttribute="leading" id="Rif-fL-Bjm"/>
                                             <constraint firstAttribute="bottom" secondItem="5c7-Ag-M9Z" secondAttribute="bottom" constant="15" id="ies-aR-yzP"/>
@@ -139,9 +140,9 @@
                                             <constraint firstItem="nRt-Jr-caz" firstAttribute="leading" secondItem="xpU-W5-deF" secondAttribute="leading" id="u89-1t-wcp"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="cardBackground" destination="nRt-Jr-caz" id="5R7-pd-5MZ"/>
                                             <outlet property="cardImage" destination="6NW-Kh-xBf" id="G76-mL-Zqp"/>
                                             <outlet property="cardLabel" destination="5c7-Ag-M9Z" id="vQO-LD-82l"/>
-                                            <outlet property="cardShadow" destination="nRt-Jr-caz" id="5R7-pd-5MZ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
