@@ -83,7 +83,7 @@
         <!--Album View-->
         <scene sceneID="PXT-dm-Mdf">
             <objects>
-                <viewController title="Album View" id="9ZI-dM-kxe" customClass="AlbumViewController" customModule="PhotoMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlbumViewControllerStoryBoardID" title="Album View" id="9ZI-dM-kxe" customClass="AlbumViewController" customModule="PhotoMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DlQ-Mi-wvk"/>
                         <viewControllerLayoutGuide type="bottom" id="ooP-aM-e27"/>

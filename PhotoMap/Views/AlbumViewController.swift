@@ -38,9 +38,8 @@ class AlbumViewController: UIViewController
         }
     }
 }
-// MARK: -
-// MARK: - collectionview delegate -
-// MARK: -
+
+// MARK: - collectionview delegate
 extension AlbumViewController: UICollectionViewDataSource
 {
 
@@ -52,7 +51,6 @@ extension AlbumViewController: UICollectionViewDataSource
     // MARK: Collectionview Datasource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
             as? AlbumCardCell ?? AlbumCardCell()
 
@@ -60,17 +58,22 @@ extension AlbumViewController: UICollectionViewDataSource
 
         return cell
     }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension AlbumViewController: UICollectionViewDelegateFlowLayout
+{
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath)
         -> CGSize
     {
-            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-            let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
 
-            return CGSize(width: widthPerItem, height: 130)
+        return CGSize(width: widthPerItem, height: 130)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -88,12 +91,14 @@ extension AlbumViewController: UICollectionViewDataSource
     {
         return 5.0
     }
+}
 
+// MARK: - UICollectionViewDelegate
+extension AlbumViewController: UICollectionViewDelegate
+{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
     }
 }
-
-extension AlbumViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {}
