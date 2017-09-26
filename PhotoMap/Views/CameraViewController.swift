@@ -104,11 +104,15 @@ extension CameraViewController: UIImagePickerControllerDelegate
             return
         }
 
+//        saveSnap(snap: Snap(image: image, location: location))
+
+        // FIXME: if it fails?
         geocoder.reverseGeocodeLocation(location, completionHandler:
         { (placemarks, _) in
-            _ = placemarks?.first
-            _ = image
-            // TODO: save snap object here
+            if let placemark = placemarks?.first
+            {
+                self.saveSnap(snap: Snap(image: image, location: location, placemark: placemark))
+            }
         })
 
         locationManager.stopUpdatingLocation()
@@ -128,3 +132,22 @@ extension CameraViewController: UIImagePickerControllerDelegate
 
 // MARK: - CLLocationManagerDelegate
 extension CameraViewController: CLLocationManagerDelegate { }
+
+// MARK: - FileData
+extension CameraViewController
+{
+    fileprivate func saveSnap(snap: Snap)
+    {
+        // load first
+        var snaps = (NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap]) ?? [Snap]()
+        // append to array
+        snaps.append(snap)
+        // save it back
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(snaps, toFile: Snap.archiveURL.path)
+        if isSuccessfulSave {
+            print("Snaps successfully saved.")
+        } else {
+            print("Failed to save snaps...")
+        }
+    }
+}

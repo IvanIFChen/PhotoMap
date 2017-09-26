@@ -11,31 +11,40 @@ class AlbumViewController: UIViewController
 {
     @IBOutlet weak var collectionView: UICollectionView!
     fileprivate let reuseIdentifier = "cell"
-    fileprivate var images: [UIImage] = []
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 20.0, right: 0.0)
     fileprivate let itemsPerRow: CGFloat = 1
+    fileprivate var images: [UIImage] = []
+    fileprivate var snaps: [Snap] = []
 
     override func viewDidLoad()
     {
+        super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        guard let meal1 = UIImage(named: "meal1") else
-        {
-            fatalError("unable to instantiate meal1")
-        }
-        guard let meal2 = UIImage(named: "meal2") else
-        {
-            fatalError("unable to instantiate meal2")
-        }
-        guard let meal3 = UIImage(named: "meal3") else
-        {
-            fatalError("unable to instantiate meal3")
-        }
-        for _ in 1...100
-        {
-            images += [meal1, meal2, meal3]
-        }
+        snaps = NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap] ?? []
+
+//        guard let meal1 = UIImage(named: "meal1") else
+//        {
+//            fatalError("unable to instantiate meal1")
+//        }
+//        guard let meal2 = UIImage(named: "meal2") else
+//        {
+//            fatalError("unable to instantiate meal2")
+//        }
+//        guard let meal3 = UIImage(named: "meal3") else
+//        {
+//            fatalError("unable to instantiate meal3")
+//        }
+//        for _ in 1...100
+//        {
+//            images += [meal1, meal2, meal3]
+//        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        snaps = NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap] ?? []
     }
 }
 
@@ -44,15 +53,16 @@ extension AlbumViewController: UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return images.count
+        return snaps.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
             as? AlbumCardCell ?? AlbumCardCell()
-
-        cell.cardData = (String(indexPath.item + 1), images[indexPath.item])
+        let index = indexPath.item
+        let location = (snaps[index].placemark?.addressDictionary!["FormattedAddressLines"] as? [String])!
+        cell.cardData = ("\(location[0]), \(location[1])", snaps[index].image)
 
         return cell
     }
