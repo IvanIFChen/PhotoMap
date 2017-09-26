@@ -23,11 +23,6 @@ class AlbumViewController: UIViewController
 
         snaps = NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap] ?? []
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        snaps = NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap] ?? []
-    }
 }
 
 // MARK: - UICollectionViewDataSource
