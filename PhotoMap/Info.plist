@@ -49,5 +49,9 @@
 	<string>use library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>use camera</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>use photo library</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>user location</string>
 </dict>
 </plist>

@@ -8,21 +8,39 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController
-{
+class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
+    fileprivate let locationManager = CLLocationManager()
+    fileprivate let geocoder = CLGeocoder()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+// MARK: - CLLocationManagerDelegate
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locations.forEach { location in
+//            print("##### This is the location: \(location.coordinate)")
+            geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, _) in
+                placemarks?.forEach { placemark in
+//                    print("@@@ This is the geocoded location: \(placemark)")
+                }
+            }
+            )
+        }
+        locationManager.stopUpdatingLocation()
     }
 }

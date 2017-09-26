@@ -42,7 +42,6 @@ class AlbumViewController: UIViewController
 // MARK: - UICollectionViewDataSource
 extension AlbumViewController: UICollectionViewDataSource
 {
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return images.count
