@@ -135,6 +135,7 @@ extension CameraViewController: CLLocationManagerDelegate { }
 // MARK: - FileData
 extension CameraViewController
 {
+    // TODO: let user do othe stuff, don't halt everything
     fileprivate func saveSnap(snap: Snap)
     {
         // load first
