@@ -13,6 +13,7 @@
 		861A1E5A1F4E8C76001CA9DF /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */; };
 		861A1E601F5383A2001CA9DF /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */; };
 		86219C471F79FDE3002532FB /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86219C461F79FDE3002532FB /* Snap.swift */; };
+		86219C4A1F7A043F002532FB /* SnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86219C491F7A043F002532FB /* SnapTests.swift */; };
 		863650D91F6B4C4B001A8F96 /* AlbumCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863650D81F6B4C4B001A8F96 /* AlbumCardCell.swift */; };
 		863A098D1F5DDD8A00D28359 /* UITestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098C1F5DDD8A00D28359 /* UITestHelper.swift */; };
 		863A098F1F5DDE8900D28359 /* CameraFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */; };
@@ -57,6 +58,7 @@
 		861A1E591F4E8C76001CA9DF /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumViewController.swift; path = Views/AlbumViewController.swift; sourceTree = "<group>"; };
 		861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
 		86219C461F79FDE3002532FB /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
+		86219C491F7A043F002532FB /* SnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapTests.swift; sourceTree = "<group>"; };
 		863650D81F6B4C4B001A8F96 /* AlbumCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCardCell.swift; sourceTree = "<group>"; };
 		863A098C1F5DDD8A00D28359 /* UITestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestHelper.swift; sourceTree = "<group>"; };
 		863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFlowUITests.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				867E57C61F46800500339429 /* Info.plist */,
 				861A1E5F1F5383A2001CA9DF /* TabBarControllerTests.swift */,
 				8684AD781F76FA2500E5871E /* AlbumViewControllerTests.swift */,
+				86219C491F7A043F002532FB /* SnapTests.swift */,
 			);
 			path = PhotoMapTests;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 			files = (
 				8684AD791F76FA2500E5871E /* AlbumViewControllerTests.swift in Sources */,
 				861A1E601F5383A2001CA9DF /* TabBarControllerTests.swift in Sources */,
+				86219C4A1F7A043F002532FB /* SnapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

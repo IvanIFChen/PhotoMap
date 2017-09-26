@@ -11,13 +11,13 @@ import CoreLocation
 
 struct Snap: Equatable
 {
-    let image: UIImage
-    let location: CLLocation
+    var image: UIImage
+    var location: CLLocation
 
-    static func ==(lhs: Snap, rhs: Snap) -> Bool
+    init()
     {
-        return lhs.image == rhs.image &&
-            lhs.location == rhs.location
+        self.image = UIImage()
+        self.location = CLLocation()
     }
 
     init(image: UIImage, location: CLLocation)
@@ -25,4 +25,12 @@ struct Snap: Equatable
         self.image = image
         self.location = location
     }
+
+    static func == (lhs: Snap, rhs: Snap) -> Bool
+    {
+        return UIImagePNGRepresentation(lhs.image) == UIImagePNGRepresentation(rhs.image) &&
+            lhs.location.coordinate.latitude == rhs.location.coordinate.latitude &&
+            lhs.location.coordinate.longitude == rhs.location.coordinate.longitude
+    }
+
 }
