@@ -13,7 +13,6 @@ class AlbumViewController: UIViewController
     fileprivate let reuseIdentifier = "cell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 20.0, right: 0.0)
     fileprivate let itemsPerRow: CGFloat = 1
-    fileprivate var images: [UIImage] = []
     fileprivate var snaps: [Snap] = []
 
     override func viewDidLoad()
@@ -23,23 +22,6 @@ class AlbumViewController: UIViewController
         collectionView.delegate = self
 
         snaps = NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap] ?? []
-
-//        guard let meal1 = UIImage(named: "meal1") else
-//        {
-//            fatalError("unable to instantiate meal1")
-//        }
-//        guard let meal2 = UIImage(named: "meal2") else
-//        {
-//            fatalError("unable to instantiate meal2")
-//        }
-//        guard let meal3 = UIImage(named: "meal3") else
-//        {
-//            fatalError("unable to instantiate meal3")
-//        }
-//        for _ in 1...100
-//        {
-//            images += [meal1, meal2, meal3]
-//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
