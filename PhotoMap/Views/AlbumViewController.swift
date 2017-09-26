@@ -39,7 +39,7 @@ class AlbumViewController: UIViewController
     }
 }
 
-// MARK: - collectionview delegate
+// MARK: - UICollectionViewDataSource
 extension AlbumViewController: UICollectionViewDataSource
 {
 
@@ -48,7 +48,6 @@ extension AlbumViewController: UICollectionViewDataSource
         return images.count
     }
 
-    // MARK: Collectionview Datasource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
