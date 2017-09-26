@@ -105,6 +105,7 @@ extension CameraViewController: UIImagePickerControllerDelegate
             return
         }
 
+        // NOTE: is it the best time to geocode here?
         // FIXME: if it fails?
         geocoder.reverseGeocodeLocation(location, completionHandler:
         { (placemarks, _) in
@@ -148,7 +149,8 @@ extension CameraViewController
         if isSuccessfulSave
         {
             print("Snaps successfully saved.")
-        } else {
+        } else
+        {
             print("Failed to save snaps...")
         }
     }
