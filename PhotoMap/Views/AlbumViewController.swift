@@ -20,8 +20,12 @@ class AlbumViewController: UIViewController
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         snaps = NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap] ?? []
+        collectionView.reloadData()
     }
 }
 

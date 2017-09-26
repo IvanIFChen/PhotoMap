@@ -90,6 +90,7 @@ extension CameraViewController: UIImagePickerControllerDelegate
             tabBarController?.selectedIndex = 2
         }
 
+        // TODO: compress this
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             print("image is empty")
             return
@@ -143,7 +144,8 @@ extension CameraViewController
 
         // save it back
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(snaps, toFile: Snap.archiveURL.path)
-        if isSuccessfulSave {
+        if isSuccessfulSave
+        {
             print("Snaps successfully saved.")
         } else {
             print("Failed to save snaps...")
