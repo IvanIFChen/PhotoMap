@@ -22,6 +22,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>use camera</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>user location</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>use photo library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>use library</string>
 	<key>UILaunchStoryboardName</key>
@@ -45,13 +49,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>use library</string>
-	<key>NSCameraUsageDescription</key>
-	<string>use camera</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>use photo library</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>user location</string>
 </dict>
 </plist>

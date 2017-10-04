@@ -25,6 +25,7 @@
 		867E57B71F46800500339429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B61F46800500339429 /* Assets.xcassets */; };
 		867E57BA1F46800500339429 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B81F46800500339429 /* LaunchScreen.storyboard */; };
 		8684AD791F76FA2500E5871E /* AlbumViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684AD781F76FA2500E5871E /* AlbumViewControllerTests.swift */; };
+		86A71D611F84B33300765F68 /* ImagesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86A71D5F1F84B33300765F68 /* ImagesDataModel.xcdatamodeld */; };
 		95D7E0286D87A3089356BBA3 /* Pods_PhotoMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EAE49A931BE89C93B224C3B /* Pods_PhotoMap.framework */; };
 		BBBA5BEFA811E6C122AF7CC6 /* Pods_PhotoMapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D313679D1218816BAEEFF22 /* Pods_PhotoMapTests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		867E57CB1F46800500339429 /* PhotoMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E57D11F46800500339429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8684AD781F76FA2500E5871E /* AlbumViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewControllerTests.swift; sourceTree = "<group>"; };
+		86A71D601F84B33300765F68 /* ImagesDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImagesDataModel.xcdatamodel; sourceTree = "<group>"; };
 		9F62DEAC6EEFFBB340E2D310 /* Pods-PhotoMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMap/Pods-PhotoMap.release.xcconfig"; sourceTree = "<group>"; };
 		D3BE57DF37F066FFCEAC4825 /* Pods-PhotoMapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMapUITests/Pods-PhotoMapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1D399F29758ED755C9F3944 /* Pods-PhotoMapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoMapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoMapUITests/Pods-PhotoMapUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				867E57BB1F46800500339429 /* Info.plist */,
 				863A09901F5DE06500D28359 /* TabBarController.swift */,
 				86219C461F79FDE3002532FB /* Snap.swift */,
+				86A71D5F1F84B33300765F68 /* ImagesDataModel.xcdatamodeld */,
 			);
 			path = PhotoMap;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 			files = (
 				867E57B21F46800500339429 /* ViewController.swift in Sources */,
 				863650D91F6B4C4B001A8F96 /* AlbumCardCell.swift in Sources */,
+				86A71D611F84B33300765F68 /* ImagesDataModel.xcdatamodeld in Sources */,
 				861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */,
 				861A1E561F4E8BCC001CA9DF /* MapViewController.swift in Sources */,
 				863A09911F5DE06500D28359 /* TabBarController.swift in Sources */,
@@ -689,7 +693,7 @@
 				DEVELOPMENT_TEAM = MHPQMR6R7U;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap170923;
+				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap171004;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -703,7 +707,7 @@
 				DEVELOPMENT_TEAM = MHPQMR6R7U;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap171004;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -811,6 +815,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		86A71D5F1F84B33300765F68 /* ImagesDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				86A71D601F84B33300765F68 /* ImagesDataModel.xcdatamodel */,
+			);
+			currentVersion = 86A71D601F84B33300765F68 /* ImagesDataModel.xcdatamodel */;
+			path = ImagesDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 867E57A41F46800500339429 /* Project object */;
 }
