@@ -22,6 +22,7 @@ class AlbumViewController: UIViewController
         collectionView.delegate = self
 
         // TODO: add pull to refresh
+        // Notes:
         // see: https://stackoverflow.com/a/41508804
     }
 

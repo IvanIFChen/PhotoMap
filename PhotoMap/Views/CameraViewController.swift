@@ -106,22 +106,27 @@ extension CameraViewController: UIImagePickerControllerDelegate
         }
 
         // TODO: handle fail case
-        geocoder.reverseGeocodeLocation(location, completionHandler:
-        { (placemarks, _) in
-            if let placemark = placemarks?.first
-            {
-                guard
-                    let addressDictionary = placemark.addressDictionary,
-                    // TODO: addressDictionary is deprecated
-                    // see: https://developer.apple.com/documentation/corelocation/clplacemark/1423605-addressdictionary
-                    let formattedAddressLines = addressDictionary["FormattedAddressLines"] as? [String]
-                    else { return }
-                self.saveSnap(snap: Snap.init(image: image,
-                                              latitude: location.coordinate.latitude,
-                                               longitude: location.coordinate.longitude,
-                                               address: formattedAddressLines[0] + formattedAddressLines[1]))
-            }
-        })
+        // TODO: double check if .default is the most appropriate
+        DispatchQueue.global(qos: .default).async
+        {
+            self.geocoder.reverseGeocodeLocation(location, completionHandler:
+                { (placemarks, _) in
+                    if let placemark = placemarks?.first
+                    {
+                        guard
+                            // TODO: search up what's inside placemark, there should be more user friendly strings
+                            let addressDictionary = placemark.addressDictionary,
+                            // TODO: addressDictionary is deprecated
+                            // see: https://developer.apple.com/documentation/corelocation/clplacemark/1423605-addressdictionary
+                            let formattedAddressLines = addressDictionary["FormattedAddressLines"] as? [String]
+                            else { return }
+                        self.saveSnap(snap: Snap.init(image: image,
+                                                      latitude: location.coordinate.latitude,
+                                                      longitude: location.coordinate.longitude,
+                                                      address: formattedAddressLines[0] + ", " + formattedAddressLines[1]))
+                    }
+            })
+        }
 
         locationManager.stopUpdatingLocation()
     }
@@ -144,7 +149,6 @@ extension CameraViewController: CLLocationManagerDelegate { }
 // MARK: - CoreData
 extension CameraViewController
 {
-    // TODO: not in main thread
     fileprivate func saveSnap(snap: Snap)
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
