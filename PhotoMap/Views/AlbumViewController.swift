@@ -20,6 +20,9 @@ class AlbumViewController: UIViewController
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+
+        // TODO: add pull to refresh
+        // see: https://stackoverflow.com/a/41508804
     }
 
     override func viewWillAppear(_ animated: Bool) {
