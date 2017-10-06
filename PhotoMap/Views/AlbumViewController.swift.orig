@@ -13,27 +13,45 @@ class AlbumViewController: UIViewController
     fileprivate let reuseIdentifier = "cell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 20.0, right: 0.0)
     fileprivate let itemsPerRow: CGFloat = 1
-    fileprivate var snapDatas: [SnapData] = []
+    fileprivate var snaps: [Snap] = []
+
+    fileprivate var tasks: [Task] = []
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+<<<<<<< Updated upstream
+=======
+        // TODO: Google this, this should be handling the dequeue process of the collection view
+//        collectionView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellWithReuseIdentifier: <#T##String#>)
+>>>>>>> Stashed changes
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        do {
-            snapDatas = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
-        }
-        catch {
-            print("Fetching Failed")
-        }
-
+<<<<<<< Updated upstream
+        snaps = NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap] ?? []
         collectionView.reloadData()
+=======
+        // FIXME: should not unarchive  everytime the view appears
+//        snaps = NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap] ?? []
+
+        do
+        {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+            {
+                return
+            }
+            tasks = try appDelegate.persistentContainer.viewContext.fetch(Task.fetchRequest())
+            collectionView.reloadData()
+        }
+        catch
+        {
+            print("Fetching failed")
+        }
+>>>>>>> Stashed changes
     }
 }
 
@@ -42,16 +60,21 @@ extension AlbumViewController: UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return snapDatas.count
+//        return snaps.count
+        return tasks.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
+        // TODO: google this too
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
             as? AlbumCardCell ?? AlbumCardCell()
-        let snapData = snapDatas[indexPath.item]
-        guard let imageAsData = snapData.image as Data? else { return UICollectionViewCell() }
-        cell.cardData = (snapData.address, UIImage(data: imageAsData, scale: 1.0)) as? (label: String, image: UIImage)
+        let index = indexPath.item
+//        let location = (  [index].placemark?.addressDictionary!["FormattedAddressLines"] as? [String])!
+        let task = tasks[index]
+//        cell.cardData = ("\(location[0]), \(location[1])", snaps[index].image)
+        cell.cardData = ("\(task.name ?? "empty")", UIImage())
+
         return cell
     }
 }

@@ -90,9 +90,13 @@ extension CameraViewController: UIImagePickerControllerDelegate
             tabBarController?.selectedIndex = 2
         }
 
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else
-        {
-            print("something is wrong with image")
+<<<<<<< Updated upstream
+        // TODO: compress this
+=======
+        // TODO: store the image data (String)
+>>>>>>> Stashed changes
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            print("image is empty")
             return
         }
 
@@ -105,21 +109,19 @@ extension CameraViewController: UIImagePickerControllerDelegate
             return
         }
 
-        // TODO: handle fail case
+<<<<<<< Updated upstream
+        // NOTE: is it the best time to geocode here?
+=======
+//        saveSnap(snap: Snap(image: image, location: location))
+        // NOTE: is this the best place to geocode? (yup, probably)
+>>>>>>> Stashed changes
+        // FIXME: if it fails?
         geocoder.reverseGeocodeLocation(location, completionHandler:
         { (placemarks, _) in
             if let placemark = placemarks?.first
             {
-                guard
-                    let addressDictionary = placemark.addressDictionary,
-                    // TODO: addressDictionary is deprecated
-                    // see: https://developer.apple.com/documentation/corelocation/clplacemark/1423605-addressdictionary
-                    let formattedAddressLines = addressDictionary["FormattedAddressLines"] as? [String]
-                    else { return }
-                self.saveSnap(snap: Snap.init(image: image,
-                                              latitude: location.coordinate.latitude,
-                                               longitude: location.coordinate.longitude,
-                                               address: formattedAddressLines[0] + formattedAddressLines[1]))
+                self.saveSnap(snap: Snap.init(image: image, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, formattedAddress: placemark.addressDictionary["FormattedAddressLines"] as? [String]))
+//                self.saveSnap(snap: Snap(image: image, location: location, placemark: placemark))
             }
         })
 
@@ -141,25 +143,29 @@ extension CameraViewController: UIImagePickerControllerDelegate
 // MARK: - CLLocationManagerDelegate
 extension CameraViewController: CLLocationManagerDelegate { }
 
-// MARK: - CoreData
+// MARK: - FileData
 extension CameraViewController
 {
-    // TODO: not in main thread
+<<<<<<< Updated upstream
+    // TODO: let user do othe stuff, don't halt everything
+=======
+    // TODO: let user do other stuff, don't halt everything
+>>>>>>> Stashed changes
     fileprivate func saveSnap(snap: Snap)
     {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        // load first
+        var snaps = (NSKeyedUnarchiver.unarchiveObject(withFile: Snap.archiveURL.path) as? [Snap]) ?? [Snap]()
 
-        // TODO: save thumbnail in a different contianer but have relationship with the full res image
-        // see: https://stackoverflow.com/questions/27995955/saving-picked-image-to-coredata
-        let snapData = SnapData(context: appDelegate.persistentContainer.viewContext)
-        guard let imageData = UIImageJPEGRepresentation(snap.image, 1.0) as NSData? else { return }
-        snapData.image = imageData
-        snapData.latitude = snap.latitude
-        snapData.longitude = snap.longitude
-        // TODO: find a way to save [String]
-        // see: https://coderwall.com/p/mx_wmq/how-to-save-a-nsarray-nsmutablearray-in-core-data
-        snapData.address = snap.address
+        snaps.append(snap)
 
-        appDelegate.saveContext()
+        // save it back
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(snaps, toFile: Snap.archiveURL.path)
+        if isSuccessfulSave
+        {
+            print("Snaps successfully saved.")
+        } else
+        {
+            print("Failed to save snaps...")
+        }
     }
 }
