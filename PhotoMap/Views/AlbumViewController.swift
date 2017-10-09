@@ -13,7 +13,7 @@ class AlbumViewController: UIViewController
     fileprivate let reuseIdentifier = "cell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 20.0, right: 0.0)
     fileprivate let itemsPerRow: CGFloat = 1
-    fileprivate var snapDatas: [SnapData] = []
+    fileprivate var snapData: [SnapData] = []
 
     override func viewDidLoad()
     {
@@ -31,7 +31,7 @@ class AlbumViewController: UIViewController
 
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         do {
-            snapDatas = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
+            snapData = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
         }
         catch {
             print("Fetching Failed")
@@ -46,16 +46,16 @@ extension AlbumViewController: UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return snapDatas.count
+        return snapData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
             as? AlbumCardCell ?? AlbumCardCell()
-        let snapData = snapDatas[indexPath.item]
-        guard let imageAsData = snapData.image as Data? else { return UICollectionViewCell() }
-        cell.cardData = (snapData.address, UIImage(data: imageAsData, scale: 1.0)) as? (label: String, image: UIImage)
+        let snap = snapData[indexPath.item]
+        guard let imageAsData = snap.image as Data? else { return UICollectionViewCell() }
+        cell.cardData = (snap.address, UIImage(data: imageAsData, scale: 1.0)) as? (label: String, image: UIImage)
         return cell
     }
 }

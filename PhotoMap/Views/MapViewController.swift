@@ -13,8 +13,31 @@ import CoreLocation
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
 
+    fileprivate var snapData: [SnapData] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        do {
+            snapData = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
+        }
+        catch {
+            print("Fetching Failed")
+        }
+
+        snapData.forEach
+        { (snap) in
+            let pointAnnotation = MKPointAnnotation()
+            pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: snap.latitude, longitude: snap.longitude)
+//            let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
+            mapView.centerCoordinate = pointAnnotation.coordinate
+            mapView.addAnnotation(pointAnnotation)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
