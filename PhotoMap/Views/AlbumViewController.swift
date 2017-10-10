@@ -13,6 +13,7 @@ class AlbumViewController: UIViewController
     fileprivate let reuseIdentifier = "cell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 20.0, right: 0.0)
     fileprivate let itemsPerRow: CGFloat = 1
+    // TODO: have a model that control this data? Do I do it with MVP? How is it going to work?
     fileprivate var snapData: [SnapData] = []
 
     override func viewDidLoad()
@@ -29,7 +30,17 @@ class AlbumViewController: UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        updateSnapData()
+        snapData = AppDelegate.updateSnapData()
+
+        collectionView.reloadData()
+    }
+
+    @objc
+    fileprivate func deleteCell(sender: UISwipeGestureRecognizer)
+    {
+        let cell = sender.view as? UICollectionViewCell ?? UICollectionViewCell()
+        let snap = snapData[collectionView.indexPath(for: cell)!.row]
+        snapData = AppDelegate.removeSnap(snap: snap)
         collectionView.reloadData()
     }
 }
@@ -97,33 +108,5 @@ extension AlbumViewController: UICollectionViewDelegate
     {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
-    }
-
-
-}
-
-// MARK: - Private Functions
-private extension AlbumViewController
-{
-    func updateSnapData()
-    {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        do {
-            snapData = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
-        }
-        catch {
-            print("Fetching Failed")
-        }
-    }
-
-    @objc
-    func deleteCell(sender: UISwipeGestureRecognizer)
-    {
-        let cell = sender.view as? UICollectionViewCell ?? UICollectionViewCell()
-        let snap = snapData[collectionView.indexPath(for: cell)!.row]
-        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
-        context.delete(snap)
-        updateSnapData()
-        collectionView.reloadData()
     }
 }

@@ -58,5 +58,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+}
 
+// MARK: - CoreDataHelper
+extension AppDelegate
+{
+    static func updateSnapData() -> [SnapData]
+    {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        {
+            do {
+                return try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
+            }
+            catch
+            {
+                print("Fetching Failed")
+            }
+        }
+        return []
+    }
+
+    static func removeSnap(snap: SnapData) -> [SnapData]
+    {
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        {
+            context.delete(snap)
+            return updateSnapData()
+        }
+        return []
+    }
 }

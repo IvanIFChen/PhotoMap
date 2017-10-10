@@ -34,14 +34,7 @@ class MapViewController: UIViewController
     {
         super.viewWillAppear(animated)
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        do {
-            snapData = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
-        }
-        catch
-        {
-            print("Fetching Failed")
-        }
+        snapData = AppDelegate.updateSnapData()
 
         mapView.addAnnotations(snapData.map
         { snap in
