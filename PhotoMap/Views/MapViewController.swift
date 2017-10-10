@@ -51,14 +51,9 @@ class MapViewController: UIViewController
             return pointAnnotation
         })
     }
-
-    override func viewDidAppear(_ animated: Bool)
-    {
-        super.viewDidAppear(animated)
-    }
 }
 
-// MARK: CLLocationManagerDelegate
+// MARK: - CLLocationManagerDelegate
 extension MapViewController: CLLocationManagerDelegate
 {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])

@@ -29,14 +29,7 @@ class AlbumViewController: UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        do {
-            snapData = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
-        }
-        catch {
-            print("Fetching Failed")
-        }
-
+        updateSnapData()
         collectionView.reloadData()
     }
 }
@@ -51,11 +44,15 @@ extension AlbumViewController: UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
-            as? AlbumCardCell ?? AlbumCardCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? AlbumCardCell ?? AlbumCardCell()
         let snap = snapData[indexPath.item]
-        guard let imageAsData = snap.image as Data? else { return UICollectionViewCell() }
+        let imageAsData = snap.image as Data? ?? Data()
         cell.cardData = (snap.address, UIImage(data: imageAsData, scale: 1.0)) as? (label: String, image: UIImage)
+
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(deleteCell))
+        swipeGesture.direction = UISwipeGestureRecognizerDirection.right
+        cell.addGestureRecognizer(swipeGesture)
+
         return cell
     }
 }
@@ -100,5 +97,33 @@ extension AlbumViewController: UICollectionViewDelegate
     {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
+    }
+
+
+}
+
+// MARK: - Private Functions
+private extension AlbumViewController
+{
+    func updateSnapData()
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        do {
+            snapData = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
+        }
+        catch {
+            print("Fetching Failed")
+        }
+    }
+
+    @objc
+    func deleteCell(sender: UISwipeGestureRecognizer)
+    {
+        let cell = sender.view as? UICollectionViewCell ?? UICollectionViewCell()
+        let snap = snapData[collectionView.indexPath(for: cell)!.row]
+        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+        context.delete(snap)
+        updateSnapData()
+        collectionView.reloadData()
     }
 }
