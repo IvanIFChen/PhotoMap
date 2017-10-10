@@ -9,11 +9,3 @@ This app cotains three tabs: map, camera, and album.
 * Album
     - a collection view that shows each photo taken organized into locations
     - tapping on each cell should bring the user to a view that shows more deatils of the location
-
-#### TODO
-* Map
-    - TODO
-* Camera
-    - TODO
-* Album
-    - TODO
