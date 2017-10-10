@@ -23,11 +23,7 @@ class MapViewController: UIViewController
 
         locationManager.delegate = self
 
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            locationManager.startUpdatingLocation()
-        } else {
-            locationManager.requestWhenInUseAuthorization()
-        }
+        centerToCurrentLocation()
     }
 
     override func viewWillAppear(_ animated: Bool)
@@ -44,6 +40,15 @@ class MapViewController: UIViewController
             return pointAnnotation
         })
     }
+
+    private func centerToCurrentLocation()
+    {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -54,6 +59,7 @@ extension MapViewController: CLLocationManagerDelegate
         guard let location = locations.first else { return }
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 1000, 1000)
         mapView.setRegion(coordinateRegion, animated: true)
+
         locationManager.stopUpdatingLocation()
     }
 }
