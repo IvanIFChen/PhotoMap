@@ -56,7 +56,7 @@ extension AlbumViewController: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? AlbumCardCell ?? AlbumCardCell()
-        let snap = snapData[indexPath.item]
+        let snap = snapData[snapData.count - indexPath.item - 1]
         let imageAsData = snap.image as Data? ?? Data()
         cell.cardData = (snap.address, UIImage(data: imageAsData, scale: 1.0)) as? (label: String, image: UIImage)
 
