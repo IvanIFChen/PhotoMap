@@ -23,6 +23,9 @@ class MapViewController: UIViewController
 
         locationManager.delegate = self
 
+        mapView.showsCompass = true
+        mapView.showsUserLocation = true
+
         centerToCurrentLocation()
     }
 
