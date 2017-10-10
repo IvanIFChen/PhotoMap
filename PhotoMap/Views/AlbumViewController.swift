@@ -22,9 +22,9 @@ class AlbumViewController: UIViewController
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        // TODO: add pull to refresh
-        // Notes:
-        // see: https://stackoverflow.com/a/41508804
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +42,14 @@ class AlbumViewController: UIViewController
         let snap = snapData[collectionView.indexPath(for: cell)!.row]
         snapData = AppDelegate.removeSnap(snap: snap)
         collectionView.reloadData()
+    }
+
+    @objc
+    fileprivate func refresh(sender: UIRefreshControl)
+    {
+        snapData = AppDelegate.updateSnapData()
+        collectionView.reloadData()
+        sender.endRefreshing()
     }
 }
 
