@@ -106,24 +106,16 @@ extension CameraViewController: UIImagePickerControllerDelegate
         }
 
         // TODO: handle fail case
-        // TODO: double check if .default is the most appropriate
         DispatchQueue.global(qos: .default).async
         {
             self.geocoder.reverseGeocodeLocation(location, completionHandler:
                 { (placemarks, _) in
                     if let placemark = placemarks?.first
                     {
-                        guard
-                            // TODO: search up what's inside placemark, there should be more user friendly strings
-                            let addressDictionary = placemark.addressDictionary,
-                            // TODO: addressDictionary is deprecated
-                            // see: https://developer.apple.com/documentation/corelocation/clplacemark/1423605-addressdictionary
-                            let formattedAddressLines = addressDictionary["FormattedAddressLines"] as? [String]
-                            else { return }
                         self.saveSnap(snap: Snap.init(image: image,
                                                       latitude: location.coordinate.latitude,
                                                       longitude: location.coordinate.longitude,
-                                                      address: formattedAddressLines[0] + ", " + formattedAddressLines[1]))
+                                                      address: "\(placemark.name ?? "") - \(placemark.locality ?? "")"))
                     }
             })
         }
@@ -160,8 +152,6 @@ extension CameraViewController
         snapData.image = imageData
         snapData.latitude = snap.latitude
         snapData.longitude = snap.longitude
-        // TODO: find a way to save [String]
-        // see: https://coderwall.com/p/mx_wmq/how-to-save-a-nsarray-nsmutablearray-in-core-data
         snapData.address = snap.address
 
         appDelegate.saveContext()

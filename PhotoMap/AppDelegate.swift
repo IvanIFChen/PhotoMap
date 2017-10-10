@@ -11,32 +11,22 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
+    {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication)
+    {
         self.saveContext()
     }
 
     // MARK: - Core Data stack
-    lazy var persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: NSPersistentContainer =
+    {
         let container = NSPersistentContainer(name: "SnapsContainer")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
@@ -47,7 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-    func saveContext () {
+    func saveContext ()
+    {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

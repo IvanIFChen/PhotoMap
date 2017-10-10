@@ -39,7 +39,7 @@ class AlbumViewController: UIViewController
     fileprivate func deleteCell(sender: UISwipeGestureRecognizer)
     {
         let cell = sender.view as? UICollectionViewCell ?? UICollectionViewCell()
-        let snap = snapData[collectionView.indexPath(for: cell)!.row]
+        let snap = snapData[(snapData.count - 1) - collectionView.indexPath(for: cell)!.row]
         snapData = AppDelegate.removeSnap(snap: snap)
         collectionView.reloadData()
     }
@@ -64,7 +64,7 @@ extension AlbumViewController: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? AlbumCardCell ?? AlbumCardCell()
-        let snap = snapData[snapData.count - indexPath.item - 1]
+        let snap = snapData[snapData.count - (indexPath.item + 1)]
         let imageAsData = snap.image as Data? ?? Data()
         cell.cardData = (snap.address, UIImage(data: imageAsData, scale: 1.0)) as? (label: String, image: UIImage)
 
