@@ -39,7 +39,7 @@ class AlbumViewController: UIViewController
     fileprivate func deleteCell(sender: UISwipeGestureRecognizer)
     {
         let cell = sender.view as? UICollectionViewCell ?? UICollectionViewCell()
-        let snap = snapData[(snapData.count - 1) - collectionView.indexPath(for: cell)!.row]
+        let snap = snapData[snapData.count - (collectionView.indexPath(for: cell)!.row + 1)]
         snapData = AppDelegate.removeSnap(snap: snap)
         collectionView.reloadData()
     }

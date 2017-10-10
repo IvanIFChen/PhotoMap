@@ -71,9 +71,10 @@ extension AppDelegate
 
     static func removeSnap(snap: SnapData) -> [SnapData]
     {
-        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate
         {
-            context.delete(snap)
+            appDelegate.persistentContainer.viewContext.delete(snap)
+            appDelegate.saveContext()
             return updateSnapData()
         }
         return []
