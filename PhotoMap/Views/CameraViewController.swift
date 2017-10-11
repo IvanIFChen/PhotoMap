@@ -109,7 +109,12 @@ extension CameraViewController: UIImagePickerControllerDelegate
         DispatchQueue.global(qos: .default).async
         {
             self.geocoder.reverseGeocodeLocation(location, completionHandler:
-                { (placemarks, _) in
+                { (placemarks, error) in
+                    if error != nil
+                    {
+                        print("failed reverse geocoding: " + error.debugDescription)
+                        return
+                    }
                     if let placemark = placemarks?.first
                     {
                         self.saveSnap(snap: Snap.init(image: image,
@@ -117,10 +122,14 @@ extension CameraViewController: UIImagePickerControllerDelegate
                                                       longitude: location.coordinate.longitude,
                                                       address: "\(placemark.name ?? "") - \(placemark.locality ?? "")"))
                     }
+                    else
+                    {
+                        print("failed getting the first placemark")
+                    }
             })
-        }
 
-        locationManager.stopUpdatingLocation()
+            self.locationManager.stopUpdatingLocation()
+        }
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
@@ -155,5 +164,7 @@ extension CameraViewController
         snapData.address = snap.address
 
         appDelegate.saveContext()
+
+        print("saved snap: (\(snap.latitude), \(snap.longitude)), \(snap.address)")
     }
 }
