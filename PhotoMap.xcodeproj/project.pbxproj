@@ -19,6 +19,8 @@
 		863A098F1F5DDE8900D28359 /* CameraFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */; };
 		863A09911F5DE06500D28359 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A09901F5DE06500D28359 /* TabBarController.swift */; };
 		863A09931F5DE0A600D28359 /* CameraScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A09921F5DE0A600D28359 /* CameraScreen.swift */; };
+		866196581F982766009659A8 /* SnapDataRepositoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866196571F982766009659A8 /* SnapDataRepositoy.swift */; };
+		8661965B1F983BC9009659A8 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8661965A1F983BC9009659A8 /* ViewControllerExtension.swift */; };
 		867E57B01F46800500339429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57AF1F46800500339429 /* AppDelegate.swift */; };
 		867E57B21F46800500339429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E57B11F46800500339429 /* ViewController.swift */; };
 		867E57B51F46800500339429 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867E57B31F46800500339429 /* Main.storyboard */; };
@@ -65,6 +67,8 @@
 		863A098E1F5DDE8900D28359 /* CameraFlowUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFlowUITests.swift; sourceTree = "<group>"; };
 		863A09901F5DE06500D28359 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		863A09921F5DE0A600D28359 /* CameraScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraScreen.swift; sourceTree = "<group>"; };
+		866196571F982766009659A8 /* SnapDataRepositoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapDataRepositoy.swift; sourceTree = "<group>"; };
+		8661965A1F983BC9009659A8 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		867E57AC1F46800500339429 /* PhotoMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E57AF1F46800500339429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867E57B11F46800500339429 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				863A09901F5DE06500D28359 /* TabBarController.swift */,
 				86219C461F79FDE3002532FB /* Snap.swift */,
 				868989A41F86EAAB00303E6A /* SnapsContainer.xcdatamodeld */,
+				866196571F982766009659A8 /* SnapDataRepositoy.swift */,
+				8661965A1F983BC9009659A8 /* ViewControllerExtension.swift */,
 			);
 			path = PhotoMap;
 			sourceTree = "<group>";
@@ -511,12 +517,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866196581F982766009659A8 /* SnapDataRepositoy.swift in Sources */,
 				867E57B21F46800500339429 /* ViewController.swift in Sources */,
 				863650D91F6B4C4B001A8F96 /* AlbumCardCell.swift in Sources */,
 				861A1E581F4E8C55001CA9DF /* CameraViewController.swift in Sources */,
 				861A1E561F4E8BCC001CA9DF /* MapViewController.swift in Sources */,
 				863A09911F5DE06500D28359 /* TabBarController.swift in Sources */,
 				867E57B01F46800500339429 /* AppDelegate.swift in Sources */,
+				8661965B1F983BC9009659A8 /* ViewControllerExtension.swift in Sources */,
 				868989A61F86EAAB00303E6A /* SnapsContainer.xcdatamodeld in Sources */,
 				861A1E5A1F4E8C76001CA9DF /* AlbumViewController.swift in Sources */,
 				86219C471F79FDE3002532FB /* Snap.swift in Sources */,
@@ -693,7 +701,7 @@
 				DEVELOPMENT_TEAM = MHPQMR6R7U;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap171004;
+				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap171018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -707,7 +715,7 @@
 				DEVELOPMENT_TEAM = MHPQMR6R7U;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap171004;
+				PRODUCT_BUNDLE_IDENTIFIER = ivanifchen.PhotoMap171018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

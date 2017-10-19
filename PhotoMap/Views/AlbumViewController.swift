@@ -15,6 +15,7 @@ class AlbumViewController: UIViewController
     fileprivate let itemsPerRow: CGFloat = 1
     // TODO: have a model that control this data? Do I do it with MVP? How is it going to work?
     fileprivate var snapData: [SnapData] = []
+    weak var snapDataRepositoryDelegate: SnapDataRepository?
 
     override func viewDidLoad()
     {
@@ -25,13 +26,25 @@ class AlbumViewController: UIViewController
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView.refreshControl = refreshControl
+
+        reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        snapData = AppDelegate.updateSnapData()
+//        snapData = AppDelegate.updateSnapData()
+//        collectionView.reloadData()
+        reloadData()
+    }
 
+    private func reloadData()
+    {
+        guard let snapData = snapDataRepositoryDelegate?.getSnapData() else
+        {
+            return
+        }
+        self.snapData = snapData
         collectionView.reloadData()
     }
 
@@ -40,15 +53,14 @@ class AlbumViewController: UIViewController
     {
         let cell = sender.view as? UICollectionViewCell ?? UICollectionViewCell()
         let snap = snapData[snapData.count - (collectionView.indexPath(for: cell)!.row + 1)]
-        snapData = AppDelegate.removeSnap(snap: snap)
-        collectionView.reloadData()
+        snapDataRepositoryDelegate?.removeSnap(snap: snap)
+        reloadData()
     }
 
     @objc
     fileprivate func refresh(sender: UIRefreshControl)
     {
-        snapData = AppDelegate.updateSnapData()
-        collectionView.reloadData()
+        reloadData()
         sender.endRefreshing()
     }
 }

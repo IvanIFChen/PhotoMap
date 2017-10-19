@@ -14,8 +14,8 @@ class MapViewController: UIViewController
 {
     @IBOutlet weak var mapView: MKMapView!
     fileprivate var locationManager: CLLocationManager = CLLocationManager()
-
-    fileprivate var snapData: [SnapData] = []
+//    fileprivate var snapData: [SnapData] = []
+    weak var snapDataRepositoryDelegate: SnapDataRepository?
 
     override func viewDidLoad()
     {
@@ -29,18 +29,22 @@ class MapViewController: UIViewController
         centerToCurrentLocation()
     }
 
-    override func viewWillAppear(_ animated: Bool)
+//    override func viewWillAppear(_ animated: Bool)
+//    {
+//        super.viewWillAppear(animated)
+//
+//        snapData = AppDelegate.updateSnapData()
+//    }
+
+    private func loadData()
     {
-        super.viewWillAppear(animated)
-
-        snapData = AppDelegate.updateSnapData()
-
+        let snapData = snapDataRepositoryDelegate!.getSnapData()
         mapView.addAnnotations(snapData.map
-        { snap in
-            let pointAnnotation = MKPointAnnotation()
-            pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: snap.latitude, longitude: snap.longitude)
-            pointAnnotation.title = snap.address
-            return pointAnnotation
+            { snap in
+                let pointAnnotation = MKPointAnnotation()
+                pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: snap.latitude, longitude: snap.longitude)
+                pointAnnotation.title = snap.address
+                return pointAnnotation
         })
     }
 

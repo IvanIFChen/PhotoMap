@@ -17,6 +17,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate
     fileprivate let locationManager = CLLocationManager()
     fileprivate let geocoder = CLGeocoder()
     fileprivate let imagePicker = UIImagePickerController()
+    weak var snapDataRepositoryDelegate: SnapDataRepository?
 
     override func viewDidLoad()
     {
@@ -28,6 +29,11 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate
     {
         super.viewWillAppear(animated)
         openCamera()
+    }
+
+    deinit
+    {
+        print("died")
     }
 
     private func checkLocationAuthorizationStatus()
@@ -50,7 +56,13 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate
         imagePicker.cameraFlashMode = .off
         imagePicker.delegate = self
 
-        present(imagePicker, animated: true)
+//        present(imagePicker, animated: true)
+
+//        imagePicker.view.bounds = view.bounds
+//        view.clipsToBounds = true
+        imagePicker.view.bounds = CGRect(x: view.bounds.origin.x, y: view.bounds.origin.y, width: view.bounds.width, height: view.bounds.height - 44)
+
+        view.addSubview(imagePicker.view)
     }
 
     private func checkCameraAuthorizationStatus() -> Bool
@@ -106,8 +118,8 @@ extension CameraViewController: UIImagePickerControllerDelegate
         }
 
         // TODO: handle fail case
-        DispatchQueue.global(qos: .default).async
-        {
+//        DispatchQueue.global(qos: .default).async
+//        {
             self.geocoder.reverseGeocodeLocation(location, completionHandler:
                 { (placemarks, error) in
                     if error != nil
@@ -117,7 +129,7 @@ extension CameraViewController: UIImagePickerControllerDelegate
                     }
                     if let placemark = placemarks?.first
                     {
-                        self.saveSnap(snap: Snap.init(image: image,
+                        self.snapDataRepositoryDelegate!.saveSnap(snap: Snap.init(image: image,
                                                       latitude: location.coordinate.latitude,
                                                       longitude: location.coordinate.longitude,
                                                       address: "\(placemark.name ?? "") - \(placemark.locality ?? "")"))
@@ -129,7 +141,7 @@ extension CameraViewController: UIImagePickerControllerDelegate
             })
 
             self.locationManager.stopUpdatingLocation()
-        }
+//        }
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
@@ -148,23 +160,23 @@ extension CameraViewController: UIImagePickerControllerDelegate
 extension CameraViewController: CLLocationManagerDelegate { }
 
 // MARK: - CoreData
-extension CameraViewController
-{
-    fileprivate func saveSnap(snap: Snap)
-    {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-
-        // TODO: save thumbnail in a different contianer but have relationship with the full res image
-        // see: https://stackoverflow.com/questions/27995955/saving-picked-image-to-coredata
-        let snapData = SnapData(context: appDelegate.persistentContainer.viewContext)
-        guard let imageData = UIImageJPEGRepresentation(snap.image, 1.0) as NSData? else { return }
-        snapData.image = imageData
-        snapData.latitude = snap.latitude
-        snapData.longitude = snap.longitude
-        snapData.address = snap.address
-
-        appDelegate.saveContext()
-
-        print("saved snap: (\(snap.latitude), \(snap.longitude)), \(snap.address)")
-    }
-}
+//extension CameraViewController
+//{
+//    fileprivate func saveSnap(snap: Snap)
+//    {
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//
+//        // TODO: save thumbnail in a different contianer but have relationship with the full res image
+//        // see: https://stackoverflow.com/questions/27995955/saving-picked-image-to-coredata
+//        let snapData = SnapData(context: appDelegate.persistentContainer.viewContext)
+//        guard let imageData = UIImageJPEGRepresentation(snap.image, 1.0) as NSData? else { return }
+//        snapData.image = imageData
+//        snapData.latitude = snap.latitude
+//        snapData.longitude = snap.longitude
+//        snapData.address = snap.address
+//
+//        appDelegate.saveContext()
+//
+//        print("saved snap: (\(snap.latitude), \(snap.longitude)), \(snap.address)")
+//    }
+//}
