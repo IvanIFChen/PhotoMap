@@ -10,7 +10,7 @@ import UIKit
 
 class TabBarController: UITabBarController
 {
-    weak var snapDataRepositoryDelegate: SnapDataRepository?
+    fileprivate var snapDataRepository = SnapDataRepository(appDelegate: (UIApplication.shared.delegate as? AppDelegate)!)
 
     override func viewDidLoad()
     {
@@ -19,34 +19,10 @@ class TabBarController: UITabBarController
 
         self.delegate = self
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
-        {
-            return
-        }
-
-        let snapDataRepositoryDelegate = SnapDataRepository(appDelegate: appDelegate)
-        self.snapDataRepositoryDelegate = snapDataRepositoryDelegate
-
         if let mapViewController = viewControllers?.first as? MapViewController
         {
-            mapViewController.snapDataRepositoryDelegate = snapDataRepositoryDelegate
+            mapViewController.snapDataRepositoryDelegate = snapDataRepository
         }
-
-//        viewControllers?.forEach(
-//        { (viewController) in
-//            if let mapViewController = viewController as? MapViewController
-//            {
-//                mapViewController.snapDataRepositoryDelegate = snapDataRepositoryDelegate
-//            }
-//            if let cameraViewController = viewController as? CameraViewController
-//            {
-//                cameraViewController.snapDataRepositoryDelegate = snapDataRepositoryDelegate
-//            }
-//            if let albumViewController = viewController as? AlbumViewController
-//            {
-//                albumViewController.snapDataRepositoryDelegate = snapDataRepositoryDelegate
-//            }
-//        })
     }
 }
 
@@ -60,17 +36,17 @@ extension TabBarController: UITabBarControllerDelegate
             case is MapViewController:
                 if let mapViewController = viewController as? MapViewController
                 {
-                    mapViewController.snapDataRepositoryDelegate = snapDataRepositoryDelegate
+                    mapViewController.snapDataRepositoryDelegate = snapDataRepository
                 }
             case is CameraViewController:
                 if let cameraViewController = viewController as? CameraViewController
                 {
-                    cameraViewController.snapDataRepositoryDelegate = snapDataRepositoryDelegate
+                    cameraViewController.snapDataRepositoryDelegate = snapDataRepository
                 }
             case is AlbumViewController:
                 if let albumViewController = viewController as? AlbumViewController
                 {
-                    albumViewController.snapDataRepositoryDelegate = snapDataRepositoryDelegate
+                    albumViewController.snapDataRepositoryDelegate = snapDataRepository
                 }
             default:
                 print("do nothing")

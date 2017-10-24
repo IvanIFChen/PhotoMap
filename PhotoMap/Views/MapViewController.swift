@@ -29,12 +29,12 @@ class MapViewController: UIViewController
         centerToCurrentLocation()
     }
 
-//    override func viewWillAppear(_ animated: Bool)
-//    {
-//        super.viewWillAppear(animated)
-//
-//        snapData = AppDelegate.updateSnapData()
-//    }
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+
+        loadData()
+    }
 
     private func loadData()
     {

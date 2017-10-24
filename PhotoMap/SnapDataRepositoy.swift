@@ -8,14 +8,6 @@
 import Foundation
 import UIKit
 
-//protocol SnapDataRepositoryDelegate
-//{
-//    func getSnapData() -> [SnapData]
-//    func getSnapData(at index: Int) -> SnapData
-//    func removeSnap(snap: SnapData)
-//    func saveSnap(snap: Snap)
-//}
-
 class SnapDataRepository
 {
     private var snapData: [SnapData] = []

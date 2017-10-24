@@ -56,13 +56,13 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate
         imagePicker.cameraFlashMode = .off
         imagePicker.delegate = self
 
-//        present(imagePicker, animated: true)
+        present(imagePicker, animated: true)
 
 //        imagePicker.view.bounds = view.bounds
 //        view.clipsToBounds = true
-        imagePicker.view.bounds = CGRect(x: view.bounds.origin.x, y: view.bounds.origin.y, width: view.bounds.width, height: view.bounds.height - 44)
+//        imagePicker.view.bounds = CGRect(x: view.bounds.origin.x, y: view.bounds.origin.y, width: view.bounds.width, height: view.bounds.height - 44)
 
-        view.addSubview(imagePicker.view)
+//        view.addSubview(imagePicker.view)
     }
 
     private func checkCameraAuthorizationStatus() -> Bool
