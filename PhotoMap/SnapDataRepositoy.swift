@@ -16,7 +16,7 @@ class SnapDataRepository
     init(appDelegate: AppDelegate)
     {
         self.appDelegate = appDelegate
-        updateSnap()
+        reloadData()
     }
 
     func getSnapData() -> [SnapData]
@@ -34,7 +34,7 @@ class SnapDataRepository
         appDelegate.persistentContainer.viewContext.delete(snap)
         appDelegate.saveContext()
 
-        updateSnap()
+        reloadData()
     }
 
     func saveSnap(snap: Snap)
@@ -52,10 +52,10 @@ class SnapDataRepository
 
         print("saved snap: (\(snap.latitude), \(snap.longitude)), \(snap.address ?? "nil")")
 
-        updateSnap()
+        reloadData()
     }
 
-    private func updateSnap()
+    private func reloadData()
     {
         do
         {
