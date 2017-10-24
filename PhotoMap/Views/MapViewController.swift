@@ -44,6 +44,7 @@ class MapViewController: UIViewController
                 let pointAnnotation = MKPointAnnotation()
                 pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: snap.latitude, longitude: snap.longitude)
                 pointAnnotation.title = snap.address
+
                 return pointAnnotation
         })
     }
@@ -70,3 +71,35 @@ extension MapViewController: CLLocationManagerDelegate
         locationManager.stopUpdatingLocation()
     }
 }
+
+// MARK; - MKMapViewDelegate
+// TODO: display custom pin image
+//extension MapViewController: MKMapViewDelegate
+//{
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+//    {
+//        let identifier = "MyPin"
+//
+//        if annotation is MKUserLocation {
+//            return nil
+//        }
+//
+//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+//
+//        if annotationView == nil {
+//            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//            annotationView?.canShowCallout = true
+//            annotationView?.image = #imageLiteral(resourceName: "meal1")
+//
+//            // if you want a disclosure button, you'd might do something like:
+//            //
+//            // let detailButton = UIButton(type: .detailDisclosure)
+//            // annotationView?.rightCalloutAccessoryView = detailButton
+//        } else {
+//            annotationView?.annotation = annotation
+//        }
+//
+//        return annotationView
+//    }
+//}
+
