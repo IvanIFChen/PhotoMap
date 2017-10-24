@@ -13,7 +13,6 @@ class AlbumViewController: UIViewController
     fileprivate let reuseIdentifier = "cell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 20.0, right: 0.0)
     fileprivate let itemsPerRow: CGFloat = 1
-    // TODO: have a model that control this data? Do I do it with MVP? How is it going to work?
     fileprivate var snapData: [SnapData] = []
     weak var snapDataRepositoryDelegate: SnapDataRepository?
 
@@ -26,15 +25,10 @@ class AlbumViewController: UIViewController
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView.refreshControl = refreshControl
-
-        reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-//        snapData = AppDelegate.updateSnapData()
-//        collectionView.reloadData()
         reloadData()
     }
 
@@ -55,6 +49,7 @@ class AlbumViewController: UIViewController
         let snap = snapData[snapData.count - (collectionView.indexPath(for: cell)!.row + 1)]
         snapDataRepositoryDelegate?.removeSnap(snap: snap)
         reloadData()
+        showToast(message: "Snap Deleted")
     }
 
     @objc

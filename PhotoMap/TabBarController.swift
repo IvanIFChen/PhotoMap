@@ -19,7 +19,7 @@ class TabBarController: UITabBarController
 
         self.delegate = self
 
-        if let mapViewController = viewControllers?.first as? MapViewController
+        if let mapViewController = selectedViewController as? MapViewController
         {
             mapViewController.snapDataRepositoryDelegate = snapDataRepository
         }
@@ -29,27 +29,28 @@ class TabBarController: UITabBarController
 // MARK: - UITabBarControllerDelegate
 extension TabBarController: UITabBarControllerDelegate
 {
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController)
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool
     {
         switch viewController
         {
-            case is MapViewController:
-                if let mapViewController = viewController as? MapViewController
-                {
-                    mapViewController.snapDataRepositoryDelegate = snapDataRepository
-                }
-            case is CameraViewController:
-                if let cameraViewController = viewController as? CameraViewController
-                {
-                    cameraViewController.snapDataRepositoryDelegate = snapDataRepository
-                }
-            case is AlbumViewController:
-                if let albumViewController = viewController as? AlbumViewController
-                {
-                    albumViewController.snapDataRepositoryDelegate = snapDataRepository
-                }
-            default:
-                print("do nothing")
+        case is MapViewController:
+            if let mapViewController = viewController as? MapViewController
+            {
+                mapViewController.snapDataRepositoryDelegate = snapDataRepository
+            }
+        case is CameraViewController:
+            if let cameraViewController = viewController as? CameraViewController
+            {
+                cameraViewController.snapDataRepositoryDelegate = snapDataRepository
+            }
+        case is AlbumViewController:
+            if let albumViewController = viewController as? AlbumViewController
+            {
+                albumViewController.snapDataRepositoryDelegate = snapDataRepository
+            }
+        default:
+            print("do nothing")
         }
+        return true
     }
 }

@@ -12,28 +12,12 @@ class SnapDataRepository
 {
     private var snapData: [SnapData] = []
     private weak var appDelegate: AppDelegate!
-//    let keyPathBeingObserved: String = "snapData"
 
     init(appDelegate: AppDelegate)
     {
         self.appDelegate = appDelegate
-//        addObserver(self, forKeyPath: "snapData", options: .new, context: nil)
+        updateSnap()
     }
-
-//    override func addObserver(_ observer: NSObject, forKeyPath keyPath: String, options: NSKeyValueObservingOptions = [], context: UnsafeMutableRawPointer?)
-//    {
-//        if keyPath == keyPathBeingObserved
-//        {
-//            do
-//            {
-//                snapData = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
-//            }
-//            catch
-//            {
-//                print("Fetching Failed")
-//            }
-//        }
-//    }
 
     func getSnapData() -> [SnapData]
     {
@@ -49,6 +33,8 @@ class SnapDataRepository
     {
         appDelegate.persistentContainer.viewContext.delete(snap)
         appDelegate.saveContext()
+
+        updateSnap()
     }
 
     func saveSnap(snap: Snap)
@@ -65,5 +51,19 @@ class SnapDataRepository
         appDelegate.saveContext()
 
         print("saved snap: (\(snap.latitude), \(snap.longitude)), \(snap.address ?? "nil")")
+
+        updateSnap()
+    }
+
+    private func updateSnap()
+    {
+        do
+        {
+            snapData = try appDelegate.persistentContainer.viewContext.fetch(SnapData.fetchRequest())
+        }
+        catch
+        {
+            print("Fetching Fialed")
+        }
     }
 }

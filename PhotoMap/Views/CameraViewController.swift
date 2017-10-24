@@ -118,8 +118,8 @@ extension CameraViewController: UIImagePickerControllerDelegate
         }
 
         // TODO: handle fail case
-//        DispatchQueue.global(qos: .default).async
-//        {
+        DispatchQueue.global(qos: .default).async
+        {
             self.geocoder.reverseGeocodeLocation(location, completionHandler:
                 { (placemarks, error) in
                     if error != nil
@@ -141,7 +141,7 @@ extension CameraViewController: UIImagePickerControllerDelegate
             })
 
             self.locationManager.stopUpdatingLocation()
-//        }
+        }
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
@@ -157,26 +157,6 @@ extension CameraViewController: UIImagePickerControllerDelegate
 }
 
 // MARK: - CLLocationManagerDelegate
-extension CameraViewController: CLLocationManagerDelegate { }
-
-// MARK: - CoreData
-//extension CameraViewController
-//{
-//    fileprivate func saveSnap(snap: Snap)
-//    {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//
-//        // TODO: save thumbnail in a different contianer but have relationship with the full res image
-//        // see: https://stackoverflow.com/questions/27995955/saving-picked-image-to-coredata
-//        let snapData = SnapData(context: appDelegate.persistentContainer.viewContext)
-//        guard let imageData = UIImageJPEGRepresentation(snap.image, 1.0) as NSData? else { return }
-//        snapData.image = imageData
-//        snapData.latitude = snap.latitude
-//        snapData.longitude = snap.longitude
-//        snapData.address = snap.address
-//
-//        appDelegate.saveContext()
-//
-//        print("saved snap: (\(snap.latitude), \(snap.longitude)), \(snap.address)")
-//    }
-//}
+extension CameraViewController: CLLocationManagerDelegate
+{
+}
